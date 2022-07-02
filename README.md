@@ -7,5 +7,14 @@
 Run
 `conda activate ./env`
 
-## Run Rasa
+## Init Rasa (OPTIONAL)
 `rasa init`
+
+## Run the latest rasa model
+1. Start action endpoint. This is where we store our actions (class and functions)
+`rasa run actions`
+
+2. On a different terminal / command prompt / anaconda prompt
+`rasa shell`
+
+3. Profit
