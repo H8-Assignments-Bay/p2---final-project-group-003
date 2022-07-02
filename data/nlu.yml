@@ -1,63 +1,633 @@
 version: "3.1"
 
 nlu:
-- intent: inform
-  examples: |
-    - [rock](choice)
-    - [paper](choice)
-    - [scissors](choice)
-
 - intent: greet
   examples: |
-    - hey
-    - hello
+    - halo
     - hi
-    - hello there
-    - good morning
-    - good evening
-    - moin
-    - hey there
-    - let's go
-    - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
+    - oy
+    - yo
+    - woi
+    - woy
+    - hello
+    - hallo
+    - hai
+    - hei
+    - selamat pagi
+    - selamat siang
+    - selamat malam
+    - halo yang disana
+    - selamat datang
+    - pagi
+    - siang
+    - malam
+    - sore
+    - assalamualaikum
+    - salam
+    - salom
+    - shalom
+    - ello
+    - hola
+    - hei hei
+    - hi hi
+    - hi hello
+    - hellow
+    - hi halo
+    - hei!
+    - halo!
+    - pagi!
+    - siang!
+    - malam!
+    - sore!
+    - selamat pagi!
+    - selamat siang!
+    - selamat malam!
+    - assalamualaikum wr. wb.
+    - assalamualaikum warahmatullahi wabarakatuh
+    - salam!
+    - salom!
+    - shalom!
+    - woy!
+    - woi!
+    - wey!
+    - wei!
+    - yo!
+    - oy!
+    - ey!
+    - selamat datang!
+    - hellow!
+    - hola
+    - hola!
+    - hi!
+    - salam sejahtera
+    - salam sejahtera!
+    - slmt pagi
+    - slmt pgi
+    - slmt siang
+    - slmt malam
+    - slmt sore
+    - slmt mlm
+    - mlm
+    - pgi
+    - siank
 
 - intent: goodbye
   examples: |
-    - cu
-    - good by
-    - cee you later
-    - good night
+    - selamat tinggal
+    - selamat tinggal!
     - bye
-    - goodbye
-    - have a nice day
-    - see you around
+    - bye!
     - bye bye
-    - see you later
+    - bye bye!
+    - dadah
+    - dadah!
+    - terima kasih
+    - terimakasih
+    - terimakasih!
+    - terima kasih!
+    - terimakasih banyak
+    - terimakasih banyak!
+    - terima kasih banyak
+    - terima kasih banyak!
+    - sampai sini saja
+    - selesai
+    - sudah
+    - sudah selesai
+    - udah
+    - dadah robot
+    - dadah bot
+    - dadah rasa bot
+    - senang berbicara dengan anda
+    - saya akan pergi
+    - cukup sampai disini
+    - aku selesai
+    - saya selesai
+    - sampai bertemu kembali
+    - sampai bertemu lagi
+    - saya rasa sudah cukup
+    - aku rasa sudah cukup
+    - saya rasa sudah sampai disini
+    - aku rasa sudah sampai disini
+    - sudah ya
+    - udah ya
+    - saya cukup puas
+    - aku cukup puas
+    - saya puas
+    - aku puas
+    - saya pergi
+    - aku pergi
+    - aku akan pergi
+
+- intent: check_balance
+  examples: |
+    - cek saldo?
+    - saya ingin cek saldo
+    - cek saldo saya
+    - tolong, cek saldo saya
+    - tolong cek saldo saya
+    - tolong, cek saldo saya!
+    - info saldo
+    - ada berapa sisa saldo saya
+    - aku ingin cek saldo
+    - aku mau cek saldo
+    - saya mau cek saldo
+    - saldo saya ada berapa?
+    - saldoku ada berapa?
+    - saldoku sisa berapa?
+    - saldo saya sisa berapa?
+    - ada berapa saldo di akun saya?
+    - ada berapa saldo di akunku?
+    - saldoku?
+    - saldo saya?
+    - total saldo saya berapa?
+    - total saldoku berapa?
+    - berapa sisa saldo saya?
+    - berapa sisa saldoku?
+    - saldo saya berapa sekarang?
+    - saldoku berapa sekarang?
+    - sekarang saldo saya berapa?
+    - sekarang saldoku berapa?
+    - ada berapa saldo saya sekarang?
+    - ada berapa saldoku sekarang?
+    - saya ingin tahu sisa saldo saya
+    - saya mau tahu sisa saldo saya
+    - saya ingin tau sisa saldo saya
+    - saya mau tau sisa saldo saya
+    - aku ingin tahu sisa saldoku
+    - aku mau tahu sisa saldoku
+    - aku ingin tau sisa saldoku
+    - aku mau tau sisa saldoku
+    - jadi, sisa saldo saya berapa?
+    - jadi, sisa saldoku berapa?
+    - aku ingin mengetahui saldoku dulu
+    - saya ingin mengetahui saldo saya dulu
+    - aku mau mengetahui saldoku dulu
+    - saya mau mengetahui saldo saya dulu
+    - aku ingin tahu saldoku dulu
+    - saya ingin tahu saldo saya dulu
+    - aku mau tahu saldoku dulu
+    - saya mau tahu saldo saya dulu
+    - aku ingin tau saldoku dulu
+    - saya ingin tau saldo saya dulu
+    - aku mau tau saldoku dulu
+    - saya mau tau saldo saya dulu
+    - aku ingin mengetahui saldoku dahulu
+    - saya ingin mengetahui saldo saya dahulu
+    - aku mau mengetahui saldoku dahulu
+    - saya mau mengetahui saldo saya dahulu
+    - aku ingin tahu saldoku dahulu
+    - saya ingin tahu saldo saya dahulu
+    - aku mau tahu saldoku dahulu
+    - saya mau tahu saldo saya dahulu
+    - aku ingin tau saldoku dahulu
+    - saya ingin tau saldo saya dahulu
+    - aku mau tau saldoku dahulu
+    - saya mau tau saldo saya dahulu
+    - cek saldo rekening?
+    - saya ingin cek saldo rekening
+    - cek saldo rekening saya
+    - tolong, cek saldo rekening saya
+    - tolong cek saldo rekening saya
+    - tolong, cek saldo rekening saya!
+    - info saldo rekening
+    - ada berapa sisa saldo rekening saya
+    - aku ingin cek saldo rekening
+    - aku mau cek saldo rekening
+    - saya mau cek saldo rekening
+    - saldo rekening saya ada berapa?
+    - saldo rekeningku ada berapa?
+    - saldo rekeningku sisa berapa?
+    - saldo rekening saya sisa berapa?
+    - ada berapa saldo rekening di akun saya?
+    - ada berapa saldo rekening di akunku?
+    - saldo rekeningku?
+    - saldo rekening saya?
+    - total saldo rekening saya berapa?
+    - total saldo rekeningku berapa?
+    - berapa sisa saldo rekening saya?
+    - berapa sisa saldo rekeningku?
+    - saldo rekening saya berapa sekarang?
+    - saldo rekeningku berapa sekarang?
+    - sekarang saldo rekening saya berapa?
+    - sekarang saldo rekeningku berapa?
+    - ada berapa saldo rekening saya sekarang?
+    - ada berapa saldo rekeningku sekarang?
+    - saya ingin tahu sisa saldo rekening saya
+    - saya mau tahu sisa saldo rekening saya
+    - saya ingin tau sisa saldo rekening saya
+    - saya mau tau sisa saldo rekening saya
+    - aku ingin tahu sisa saldo rekeningku
+    - aku mau tahu sisa saldo rekeningku
+    - aku ingin tau sisa saldo rekeningku
+    - aku mau tau sisa saldo rekeningku
+    - jadi, sisa saldo rekening saya berapa?
+    - jadi, sisa saldo rekeningku berapa?
+    - aku ingin mengetahui saldo rekeningku dulu
+    - saya ingin mengetahui saldo rekening saya dulu
+    - aku mau mengetahui saldo rekeningku dulu
+    - saya mau mengetahui saldo rekening saya dulu
+    - aku ingin tahu saldo rekeningku dulu
+    - saya ingin tahu saldo rekening saya dulu
+    - aku mau tahu saldo rekeningku dulu
+    - saya mau tahu saldo rekening saya dulu
+    - aku ingin tau saldo rekeningku dulu
+    - saya ingin tau saldo rekening saya dulu
+    - aku mau tau saldo rekeningku dulu
+    - saya mau tau saldo rekening saya dulu
+    - aku ingin mengetahui saldo rekeningku dahulu
+    - saya ingin mengetahui saldo rekening saya dahulu
+    - aku mau mengetahui saldo rekeningku dahulu
+    - saya mau mengetahui saldo rekening saya dahulu
+    - aku ingin tahu saldo rekeningku dahulu
+    - saya ingin tahu saldo rekening saya dahulu
+    - aku mau tahu saldo rekeningku dahulu
+    - saya mau tahu saldo rekening saya dahulu
+    - aku ingin tau saldo rekeningku dahulu
+    - saya ingin tau saldo rekening saya dahulu
+    - aku mau tau saldo rekeningku dahulu
+    - saya mau tau saldo rekening saya dahulu
+    - saldo di akun saya
+    - saldo di akunku
+    - saldo rekening di akun saya
+    - saldo rekening di akunku
 
 - intent: affirm
   examples: |
-    - yes
+    - iya
+    - iya!
+    - ya
+    - ya!
+    - benar
+    - benar sekali
+    - tidak salah
+    - ok
+    - oke
+    - yup
+    - ya, benar
+    - iya, benar
+    - ya benar
+    - iya benar
+    - ya, benar sekali
+    - iya, benar sekali
+    - ya tidak salah
+    - iya tidak salah
+    - ya, tidak salah
+    - iya, tidak salah
+    - setuju
+    - betul
+    - ya betul
+    - iya betul
+    - ya, betul
+    - iya, betul
+    - baik
+    - baiklah
+    - baik!
+    - baiklah!
+    - ia
+    - sungguh
+    - benar-benar
+    - betul-betul
+    - sungguh benar
+    - sungguh betul
+    - benar begitu
+    - betul begitu
+    - iya begitu
+    - ya begitu
+    - begitu benar
+    - begitu betul
+    - yep
+    - yep!
+    - yap
+    - yap!
+    - memang benar
+    - memang betul
     - y
-    - indeed
-    - of course
-    - that sounds good
-    - correct
+    - aku yakin
+    - saya yakin
+    - iya terimakasih
+    - iya, terimakasih
+    - iya terimakasih!
+    - iya, terimakasih!
+    - iya terima kasih
+    - iya, terima kasih
+    - iya terima kasih!
+    - iya, terima kasih!
+    - benar terimakasih
+    - benar, terimakasih
+    - benar terimakasih!
+    - benar, terimakasih!
+    - benar terima kasih
+    - benar, terima kasih
+    - benar terima kasih!
+    - benar, terima kasih!
+    - betul terimakasih
+    - betul, terimakasih
+    - betul terimakasih!
+    - betul, terimakasih!
+    - betul terima kasih
+    - betul, terima kasih
+    - betul terima kasih!
+    - betul, terima kasih!
+    - aku suka
+    - saya suka
+    - suka
+    - iye
+    - iyo
+    - keren
+    - bagus
 
 - intent: deny
   examples: |
-    - no
+    - tidak
+    - tidak benar
+    - tidak betul
+    - tidak setuju
+    - salah
+    - bukan
     - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
+    - tidak terimakasih
+    - tidak, terimakasih
+    - tidak terimakasih!
+    - tidak, terimakasih!
+    - tidak terima kasih
+    - tidak, terima kasih
+    - tidak terima kasih!
+    - tidak, terima kasih!
+    - aku tidak mau
+    - saya tidak mau
+    - aku tidak suka
+    - saya tidak suka
+    - aku tidak yakin
+    - saya tidak yakin
+    - aku tidak suka
+    - saya tidak suka
+    - tidak suka
+    - bukan apa apa!
+    - lupakanlah
+    - lupakanlah!
+    - biarkan saja
+    - biarkan
+    - aku tolak
+    - saya tolak
+    - aku tidak terima
+    - saya tidak terima
+    - aku menolaknya
+    - saya menolaknya
+    - aku menolak
+    - saya menolak
+    - tak
+    - tak!
+    - tak mau
+    - tak mau!
+    - tak suka
+    - tak suka!
+    - ngga
+    - ga
+    - gak
+    - nda
+    - kagak
+    - kaga
+    - tidak suka
+    - tidak mau
+    - aku tidak tahu
+    - saya tidak tahu
+    - aku tidak tau
+    - saya tidak tau
+    - tidak bagus
+    - jelek
+    - tidak keren
+    - tdk
+    - saia tdk mau
+    - saya tdk mau
+    - saya tdk suka
+    - saya tdk yakin
+    - aku tdk yakin
+    - bkn
 
 - intent: bot_challenge
   examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
+    - apakah kamu robot?
+    - apakah anda robot?
+    - apakah kamu bot?
+    - apakah anda bot?
+    - apakah saya berbicara dengan AI?
+    - apakah kamu manusia atau bot?
+    - apakah anda manusia atau bot?
+    - apakah kamu manusia atau robot?
+    - apakah anda manusia atau robot?
+    - apakah kamu nyata?
+    - apakah anda nyata?
+    - apakah kamu virtual?
+    - apakah anda virtual?
+    - apakah kamu AI?
+    - apakah anda AI?
+    - apakah kamu chatbot?
+    - apakah anda chatbot?
+    - apakah kamu rasa bot?
+    - apakah anda rasa bot?
+    - apakah kamu artificial?
+    - apakah anda artificial?
+    - apakah kamu palsu?
+    - apakah anda palsu?
+    - apakah kamu kecerdasan buatan?
+    - apakah anda kecerdasan buatan?
+    - apakah kamu artificial intelligence?
+    - apakah anda artificial intelligence?
+    - apakah kamu yakin kamu manusia?
+    - apakah anda yakin anda manusia?
+    - apakah kamu yakin kamu bukan bot?
+    - apakah anda yakin anda bukan bot?
+    - apakah kamu yakin kamu bukan robot?
+    - apakah anda yakin anda bukan robot?
+    - apa kamu robot?
+    - apa anda robot?
+    - apa kamu bot?
+    - apa anda bot?
+    - apa saya berbicara dengan AI?
+    - apa kamu manusia atau bot?
+    - apa anda manusia atau bot?
+    - apa kamu manusia atau robot?
+    - apa anda manusia atau robot?
+    - apa kamu nyata?
+    - apa anda nyata?
+    - apa kamu virtual?
+    - apa anda virtual?
+    - apa kamu AI?
+    - apa anda AI?
+    - apa kamu chatbot?
+    - apa anda chatbot?
+    - apa kamu rasa bot?
+    - apa anda rasa bot?
+    - apa kamu artificial?
+    - apa anda artificial?
+    - apa kamu palsu?
+    - apa anda palsu?
+    - apa kamu kecerdasan buatan?
+    - apa anda kecerdasan buatan?
+    - apa kamu artificial intelligence?
+    - apa anda artificial intelligence?
+    - apa kamu yakin kamu manusia?
+    - apa anda yakin anda manusia?
+    - apa kamu yakin kamu bukan bot?
+    - apa anda yakin anda bukan bot?
+    - apa kamu yakin kamu bukan robot?
+    - apa anda yakin anda bukan robot?
+    - bot?
+    - robot?
+    - manusia?
+    - bukan bot?
+    - bukan robot?
+    - bukan manusia?
+    - apakah kamu bukan robot?
+    - apakah anda bukan robot?
+    - apakah kamu bukan bot?
+    - apakah anda bukan bot?
+    - apakah kamu tidak nyata?
+    - apakah anda tidak nyata?
+    - apakah kamu tidak virtual?
+    - apakah anda tidak virtual?
+    - apakah kamu bukan AI?
+    - apakah anda bukan AI?
+    - apakah kamu bukan chatbot?
+    - apakah anda bukan chatbot?
+    - apakah kamu bukan rasa bot?
+    - apakah anda bukan rasa bot?
+    - apakah kamu bukan artificial?
+    - apakah anda bukan artificial?
+    - apakah kamu tidak palsu?
+    - apakah anda tidak palsu?
+    - apakah kamu bukan kecerdasan buatan?
+    - apakah anda bukan kecerdasan buatan?
+    - apakah kamu bukan artificial intelligence?
+    - apakah anda bukan artificial intelligence?
+    - apakah kamu yakin kamu bukan manusia?
+    - apakah anda yakin anda bukan manusia?
+    - apakah kamu yakin kamu bot?
+    - apakah anda yakin anda bot?
+    - apakah kamu yakin kamu robot?
+    - apakah anda yakin anda robot?
+    - apa kamu bukan robot?
+    - apa anda bukan robot?
+    - apa kamu bukan bot?
+    - apa anda bukan bot?
+    - apa kamu tidak nyata?
+    - apa anda tidak nyata?
+    - apa kamu bukan virtual?
+    - apa anda bukan virtual?
+    - apa kamu bukan AI?
+    - apa anda bukan AI?
+    - apa kamu bukan chatbot?
+    - apa anda bukan chatbot?
+    - apa kamu bukan rasa bot?
+    - apa anda bukan rasa bot?
+    - apa kamu bukan artificial?
+    - apa anda bukan artificial?
+    - apa kamu tidak palsu?
+    - apa anda tidak palsu?
+    - apa kamu bukan kecerdasan buatan?
+    - apa anda bukan kecerdasan buatan?
+    - apa kamu bukan artificial intelligence?
+    - apa anda bukan artificial intelligence?
+    - apa kamu yakin kamu bukan manusia?
+    - apa anda yakin anda bukan manusia?
+    - apa kamu yakin kamu bot?
+    - apa anda yakin anda bot?
+    - apa kamu yakin kamu robot?
+    - apa anda yakin anda robot?
+
+- intent: thankyou
+  examples: |
+    - makasih
+    - terimakasih
+    - terima kasih
+    - oh, baik terima kasih
+    - oh, baik terimakasih
+    - oke terima kasih
+    - oke terimakasih
+    - ini sangat membantu
+    - terima kasih dan selamat tinggal
+    - terimakasih dan selamat tinggal
+    - thanks
+    - thank you
+    - terimakasih ini membantu
+    - terima kasih ini membantu
+    - wow, terima kasih
+    - wow terimakasih
+    - terima asih
+    - terima kash
+    - selesai, terima kasih
+    - sudah selesai, terima aksih
+    - terima aksih
+    - sudah selesai, terima kasih
+    - kerja bagus
+    - sangat membantu sekali
+    - sangat membantu sekali, terima kasih
+    - mksh
+    - mksih
+    - trima kasih
+    - trima ksh
+    - terima kasih atas informasinya
+    - terimakasih atas informasinya
+    - baik terima kasih
+    - baik terimkasih
+    - informasi yang sangat bagus. terima kasih
+    - informasi yang sangat bagus. terimakasih
+    - informasi yang bagus, terima kasih
+    - informasi yang bagus, terimakasih
+    - informasi yg bagus, terimakasih
+
+- intent: help
+  examples: |
+    - help!
+    - help
+    - bantuan
+    - saya butuh bantuan
+    - ada yang perlu di bantu lagi?
+    - ada yang ingin ada perlukan?
+    - apa yang anda butuhkan?
+    - beritahu saya apa yang anda butuhkan
+    - tolong saya
+    - tolong bantu saya
+    - tolong saya!
+    - tolong bantu saya!
+    - bantu saya!
+    - bantu saya
+    - bagaimana cara kerjanya?
+    - bagaimana caranya?
+    - caranya bagaimana?
+    - caranya gimana?
+    - gimana caranya?
+    - bisakah bantu saya?
+    - bisakah anda bantu saya?
+    - bagaimana cara memakai ini?
+    - gimana cara memakai ini?
+    - bagaimana cara pakai ini?
+    - gimana cara pakai ini?
+    - bagaimana cara memakainya?
+    - gimana cara memakainya?
+    - bagaimana cara pakainya?
+    - gimana cara pakainya?
+    - apa yang dapat anda lakukan?
+    - apa yang dapat kamu lakukan?
+    - kamu bisa apa?
+    - anda bisa apa?
+    - kamu bisa apa saja?
+    - anda bisa apa saja?
+    - tolong beritahu saya cara kerjanya
+    - tolong beritahu saya bagaimana caranya
+    - tolong beritahu saya gimana pakainya
+    - tolong ini bagaimana
+    - tolong ini gimana
+    - tolong saya tidak mengerti
+    - tolong saya ngga mengerti
+    - tolong saya gak mengerti
+    - tolong saya nda mengerti
+    - tolong saya kagak mengerti
+    - tolong saya kaga mengerti
+    - tolong saya tidak ngerti
+    - tolong saya ngga ngerti
+    - tolong saya gak ngerti
+    - tolong saya nda ngerti
+    - tolong saya kagak ngerti
+    - tolong saya kaga ngerti
+    - tolonk

@@ -2,22 +2,11 @@ version: "3.1"
 
 stories:
 
-- story: play rock paper scissors
+- story: check balance
   steps:
   - intent: greet
-  - action: utter_play
-  - intent: inform
-  - action: action_play_rps
-  - action: utter_play_again
-
-- story: play again
-  steps:
-  - action: utter_play_again
+  - action: utter_help
+  - intent: check_balance
+  - action: action_show_balance
   - intent: affirm
-  - action: utter_play
-
-- story: don't play again
-  steps:
-  - action: utter_play_again
-  - intent: deny
-  - action: utter_goodbye
+  - action: utter_ok

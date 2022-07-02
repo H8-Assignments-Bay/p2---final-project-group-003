@@ -1,2 +1,2 @@
 marker_played_rps:
-  action: action_play_rps
+  action: action_show_balance

@@ -1,42 +1,67 @@
 version: "3.1"
 
 intents:
+  - bot_challenge
   - greet
-  - inform
   - goodbye
+  - inform
   - affirm
   - deny
-  - bot_challenge
+  - thankyou
+  - check_balance
+  - invest
+  - withdraw
+  - check_projects
 
 entities:
   - choice
+  - amount-of-money
 
 slots:
   choice:
     type: categorical
     values:
-      - rock
-      - paper
-      - scissors
+      - 1
+      - 2
+      - 3
     mappings:
     - type: from_entity
       entity: choice
+  currency:
+    type: any
+    influence_conversation: false
+    initial_value: Rp
+    mappings:
+    - type: custom
+
 
 responses:
-  utter_play:
-  - text: "Type 'rock', 'paper' or 'scissors' to play."
+  utter_out_of_scope:
+  - text: 'Mohon maaf, saya tidak bisa memproses permintaan anda. Ketik "help" untuk penggunaan bot ini.'
 
-  utter_play_again:
-  - text: "Do you want to play again?"
+  utter_account_balance:
+  - text: Saldo dompet anda saat ini adalah {currency}{init_account_balance}.
 
   utter_goodbye:
   - text: "Bye"
 
+  utter_ok:
+  - text: 👍
+
+  utter_ask_continue:
+  - text: Apakah anda ingin lanjut?
+
+  utter_default:
+  - text: Maaf, saya tidak mengerti permintaan anda. Mohon diulangi dengan bentuk kalimat lain.
+
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+  - text: "Saya adalah virtual asisten anda, powered by Rasa."
+
+  utter_help:
+  - text: "Saya bisa membantu anda dalam beberapa hal, seperti: \n- Berapa nilai saldo dompet saya sekarang? \n- Saya ingin mendanai \n- Saya ingin mencairkan saldo"
 
 actions:
-   - action_play_rps
+  - action_show_balance
 
 session_config:
   session_expiration_time: 60

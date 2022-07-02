@@ -7,8 +7,8 @@
 Run
 `conda activate ./env`
 
-## Init Rasa (OPTIONAL)
-`rasa init`
+## Train rasa model
+`rasa train`
 
 ## Run the latest rasa model
 1. Start action endpoint. This is where we store our actions (class and functions)

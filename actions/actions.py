@@ -12,47 +12,45 @@ import random
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.events import (
+    SlotSet,
+    EventType,
+    ActionExecuted,
+    SessionStarted,
+    Restarted,
+    FollowupAction,
+    UserUtteranceReverted,
+)
 
 
-class ActionPlayRPS(Action):
+class ActionShowBalance(Action):
+    """Shows the balance of account"""
 
     def name(self) -> Text:
-        return "action_play_rps"
+        """Unique identifier of the action"""
+        return "action_show_balance"
 
-    def computer_choice(self):
-        generatednum = random.randint(1, 3)
-        if generatednum == 1:
-            computerchoice = "rock"
-        elif generatednum == 2:
-            computerchoice = "paper"
-        elif generatednum == 3:
-            computerchoice = "scissors"
-        
-        return computerchoice
+    async def run(
+        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
+    ) -> List[EventType]:
+        """Executes the custom action"""
 
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        # show bank account balance
+        account_balance = random.randint(1, 1000) * 50000
+        # amount = tracker.get_slot("amount_transferred")
+        dispatcher.utter_message(
+            response="utter_account_balance",
+            init_account_balance=f"{account_balance:,}",
+        )
 
-        # play rock paper scissors
-        user_choice = tracker.get_slot("choice")
-        dispatcher.utter_message(text=f"You chose {user_choice}")
-        comp_choice = self.computer_choice()
-        dispatcher.utter_message(text=f"Computer chose {comp_choice}")
+        events = []
+        # active_form_name = tracker.active_form.get("name")
+        # if active_form_name:
+        #     # keep the tracker clean for the predictions with form switch stories
+        #     events.append(UserUtteranceReverted())
+        #     # trigger utter_ask_{form}_AA_CONTINUE_FORM, by making it the requested_slot
+        #     events.append(SlotSet("AA_CONTINUE_FORM", None))
+        #     # avoid that bot goes in listen mode after UserUtteranceReverted
+        #     events.append(FollowupAction(active_form_name))
 
-        if user_choice == "rock" and comp_choice == "scissors":
-            dispatcher.utter_message(text="Congrats,You won!")
-        elif user_choice == "rock" and comp_choice == "paper":
-            dispatcher.utter_message(text="The computer won this round.")
-        elif user_choice == "paper" and comp_choice == "rock":
-            dispatcher.utter_message(text="Congrats,You won!")
-        elif user_choice == "paper" and comp_choice == "scissors":
-            dispatcher.utter_message(text="The computer won this round.")
-        elif user_choice == "scissors" and comp_choice == "paper":
-            dispatcher.utter_message(text="Congrats,You won!")
-        elif user_choice == "scissors" and comp_choice == "rock":
-            dispatcher.utter_message(text="The computer won this round.")
-        else:
-            dispatcher.utter_message(text="It was a tie!")
-
-        return []
+        return events
