@@ -1,123 +1,6 @@
 version: "3.1"
 
 nlu:
-- intent: greet
-  examples: |
-    - halo
-    - hi
-    - oy
-    - yo
-    - woi
-    - woy
-    - hello
-    - hallo
-    - hai
-    - hei
-    - selamat pagi
-    - selamat siang
-    - selamat malam
-    - halo yang disana
-    - selamat datang
-    - pagi
-    - siang
-    - malam
-    - sore
-    - assalamualaikum
-    - salam
-    - salom
-    - shalom
-    - ello
-    - hola
-    - hei hei
-    - hi hi
-    - hi hello
-    - hellow
-    - hi halo
-    - hei!
-    - halo!
-    - pagi!
-    - siang!
-    - malam!
-    - sore!
-    - selamat pagi!
-    - selamat siang!
-    - selamat malam!
-    - assalamualaikum wr. wb.
-    - assalamualaikum warahmatullahi wabarakatuh
-    - salam!
-    - salom!
-    - shalom!
-    - woy!
-    - woi!
-    - wey!
-    - wei!
-    - yo!
-    - oy!
-    - ey!
-    - selamat datang!
-    - hellow!
-    - hola
-    - hola!
-    - hi!
-    - salam sejahtera
-    - salam sejahtera!
-    - slmt pagi
-    - slmt pgi
-    - slmt siang
-    - slmt malam
-    - slmt sore
-    - slmt mlm
-    - mlm
-    - pgi
-    - siank
-
-- intent: goodbye
-  examples: |
-    - selamat tinggal
-    - selamat tinggal!
-    - bye
-    - bye!
-    - bye bye
-    - bye bye!
-    - dadah
-    - dadah!
-    - terima kasih
-    - terimakasih
-    - terimakasih!
-    - terima kasih!
-    - terimakasih banyak
-    - terimakasih banyak!
-    - terima kasih banyak
-    - terima kasih banyak!
-    - sampai sini saja
-    - selesai
-    - sudah
-    - sudah selesai
-    - udah
-    - dadah robot
-    - dadah bot
-    - dadah rasa bot
-    - senang berbicara dengan anda
-    - saya akan pergi
-    - cukup sampai disini
-    - aku selesai
-    - saya selesai
-    - sampai bertemu kembali
-    - sampai bertemu lagi
-    - saya rasa sudah cukup
-    - aku rasa sudah cukup
-    - saya rasa sudah sampai disini
-    - aku rasa sudah sampai disini
-    - sudah ya
-    - udah ya
-    - saya cukup puas
-    - aku cukup puas
-    - saya puas
-    - aku puas
-    - saya pergi
-    - aku pergi
-    - aku akan pergi
-
 - intent: check_balance
   examples: |
     - cek saldo?
@@ -250,6 +133,123 @@ nlu:
     - saldo di akunku
     - saldo rekening di akun saya
     - saldo rekening di akunku
+
+- intent: greet
+  examples: |
+    - halo
+    - hi
+    - oy
+    - yo
+    - woi
+    - woy
+    - hello
+    - hallo
+    - hai
+    - hei
+    - selamat pagi
+    - selamat siang
+    - selamat malam
+    - halo yang disana
+    - selamat datang
+    - pagi
+    - siang
+    - malam
+    - sore
+    - assalamualaikum
+    - salam
+    - salom
+    - shalom
+    - ello
+    - hola
+    - hei hei
+    - hi hi
+    - hi hello
+    - hellow
+    - hi halo
+    - hei!
+    - halo!
+    - pagi!
+    - siang!
+    - malam!
+    - sore!
+    - selamat pagi!
+    - selamat siang!
+    - selamat malam!
+    - assalamualaikum wr. wb.
+    - assalamualaikum warahmatullahi wabarakatuh
+    - salam!
+    - salom!
+    - shalom!
+    - woy!
+    - woi!
+    - wey!
+    - wei!
+    - yo!
+    - oy!
+    - ey!
+    - selamat datang!
+    - hellow!
+    - hola
+    - hola!
+    - hi!
+    - salam sejahtera
+    - salam sejahtera!
+    - slmt pagi
+    - slmt pgi
+    - slmt siang
+    - slmt malam
+    - slmt sore
+    - slmt mlm
+    - mlm
+    - pgi
+    - siank
+
+- intent: goodbye
+  examples: |
+    - selamat tinggal
+    - selamat tinggal!
+    - bye
+    - bye!
+    - bye bye
+    - bye bye!
+    - dadah
+    - dadah!
+    - terima kasih
+    - terimakasih
+    - terimakasih!
+    - terima kasih!
+    - terimakasih banyak
+    - terimakasih banyak!
+    - terima kasih banyak
+    - terima kasih banyak!
+    - sampai sini saja
+    - selesai
+    - sudah
+    - sudah selesai
+    - udah
+    - dadah robot
+    - dadah bot
+    - dadah rasa bot
+    - senang berbicara dengan anda
+    - saya akan pergi
+    - cukup sampai disini
+    - aku selesai
+    - saya selesai
+    - sampai bertemu kembali
+    - sampai bertemu lagi
+    - saya rasa sudah cukup
+    - aku rasa sudah cukup
+    - saya rasa sudah sampai disini
+    - aku rasa sudah sampai disini
+    - sudah ya
+    - udah ya
+    - saya cukup puas
+    - aku cukup puas
+    - saya puas
+    - aku puas
+    - saya pergi
+    - aku pergi
+    - aku akan pergi
 
 - intent: affirm
   examples: |
