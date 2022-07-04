@@ -1,6 +1,38 @@
 version: "3.1"
 
 nlu:
+- intent: invest
+  examples: |
+    - saya ingin berinvestasi
+    - saya ingin mendanai
+    - mau berinvestasi
+    - mau mendanai sebuah proyek
+    - mau mendanai sebuah project
+    - mau berinvestasi ke [REG506-AMD001](PROJECT_CODE)
+    - mau mendanai proyek [REG850-FIK185](PROJECT_CODE)
+    - mau mendanai project [REG205-YQZ028](PROJECT_CODE)
+    - mau mendanai project [REG853-BMJ085](PROJECT_CODE) sebesar [1000000](invest_amount)
+    - mau mendanai [1000000](invest_amount)
+    - mau investasi 1000000](invest_amount)
+    - saya ingin menanamkan modal
+    - mau menanamkan modal
+    - mau modalin proyek
+    - pendanaan modal ke [REG850-FIK185](PROJECT_CODE)
+    - investasi ke [REG850-FIK185](PROJECT_CODE)
+    - mendanai proyek [REG850-FIK185](PROJECT_CODE)
+    - penamanan modal ke [REG850-FIK185](PROJECT_CODE)
+    - pendanaan uang ke proyek [REG850-FIK185](PROJECT_CODE)
+    - pendanaan uang ke project [REG850-FIK185](PROJECT_CODE)
+    - mau danain proyek [REG850-FIK185](PROJECT_CODE)
+    - mau danain project [REG850-FIK185](PROJECT_CODE)
+    - mau modalin proyek [REG850-FIK185](PROJECT_CODE)
+    - mau modalin project [REG850-FIK185](PROJECT_CODE)
+    - mau investasi ke proyek [REG850-FIK185](PROJECT_CODE)
+    - mau investasi ke project [REG850-FIK185](PROJECT_CODE)
+    - saya mau menanam modal ke [REG850-FIK185](PROJECT_CODE)
+    - saya mau berinvestasi ke [REG850-FIK185](PROJECT_CODE)
+    - saya ingin mendanai proyek [REG850-FIK185](PROJECT_CODE)
+
 - intent: withdrawal
   examples: |
     - saya ingin mencairkan dompet
@@ -17,22 +49,22 @@ nlu:
     - mau tarik saldo
     - saya mau tarik saldo saya
     - saya mau mencairkan saldo
-    - saya mau mencairkan saldo senilai [100000](withdrawal_amount)
-    - mau tarik dana [500000](withdrawal_amount)
-    - cairkan saldoku [100000](withdrawal_amount)
-    - tarik saldo senilai Rp[100000](withdrawal_amount)
-    - tarik uang Rp[800000](withdrawal_amount)
-    - cairkan saldo Rp[100000](withdrawal_amount)
+    - saya mau mencairkan saldo senilai [100000](amount_of_money)
+    - mau tarik dana [500000](amount_of_money)
+    - cairkan saldoku [100000](amount_of_money)
+    - tarik saldo senilai Rp[100000](amount_of_money)
+    - tarik uang Rp[800000](amount_of_money)
+    - cairkan saldo Rp[100000](amount_of_money)
 
 - intent: inform
   examples: |
-    - Rp[100000](withdrawal_amount)
-    - [500000](withdrawal_amount)
-    - [50000](withdrawal_amount)
-    - Rp[100000](withdrawal_amount)
-    - Rp[500000](withdrawal_amount)
-    - [100000](withdrawal_amount) rupiah
-    - [1000000](withdrawal_amount) rupiah
+    - Rp[100000](amount_of_money)
+    - [500000](amount_of_money)
+    - [50000](amount_of_money)
+    - Rp[100000](amount_of_money)
+    - Rp[500000](amount_of_money)
+    - [100000](amount_of_money) rupiah
+    - [1000000](amount_of_money) rupiah
 
 - intent: check_balance
   examples: |

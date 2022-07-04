@@ -1,7 +1,7 @@
 version: "3.1"
 
 intents:
-  # - invest
+  - invest
   # - check_projects
   - withdrawal
   - inform
@@ -10,22 +10,29 @@ intents:
   - deny
   - greet
   - goodbye
+  - help
   - thankyou
   - bot_challenge
   - nlu_fallback
 
 entities:
-  - withdrawal_amount
+  - amount_of_money
 
 slots:
-  withdrawal_amount:
+  amount_of_money:
     influence_conversation: true
     min_value: 0
     max_value: 100_000_000
     type: float
     mappings:
     - type: from_entity
-      entity: withdrawal_amount
+      entity: amount_of_money
+
+  previous_form_name:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: custom
 
   account_balance:
     type: float
@@ -45,17 +52,14 @@ slots:
 
 
 responses:
-  utter_withdrawal_amount_validated:
-  - text: Anda ingin menarik dana dari dompet sejumlah {currency}{withdrawal_amount}.
+  utter_withdrawal_success:
+  - text: Penarikan dana dari dompet sejumlah {currency}{withdrawal_amount} berhasil.
 
-  utter_ask_withdrawal_amount:
+  utter_ask_withdrawal_form_amount_of_money:
   - text: Berapa jumlah penarikan dana yang anda inginkan?
 
   utter_insufficient_balance:
   - text: Mohon maaf, saldo dompet anda tidak cukup. Anda ingin menarik dompet sejumlah {currency}{withdrawal_amount}, sedangkan saldo anda sejumlah {currency}{account_balance}.
-
-  utter_submit_withdrawal:
-  - text: Saya akan memproses penarikan dana anda dengan segera
 
   utter_account_balance:
   - text: Saldo dompet anda saat ini adalah {currency}{account_balance}.
@@ -94,9 +98,9 @@ actions:
 
 forms:
   withdrawal_form:
-    ignored_intents: [check_balance]
+    ignored_intents: [check_balance, invest]
     required_slots:
-    - withdrawal_amount
+    - amount_of_money
 
 session_config:
   session_expiration_time: 60

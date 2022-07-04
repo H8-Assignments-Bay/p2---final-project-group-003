@@ -57,25 +57,6 @@ projects_list = {
 }
 
 
-class ActionPayProject(Action):
-    """Transfer to invest in project."""
-    def name(self) -> Text:
-        """Unique identifier of the action"""
-        return "action_pay_project"
-
-    async def run(
-            self, dispatcher: CollectingDispatcher,
-            tracker: Tracker, domain: Dict
-        ) -> List[EventType]:
-        """Executes the custom action"""
-
-        # slots = {
-        #     "AA_CONTINUE_FORM": None,
-        #     "zz_confirm_form": None,
-        #     "PROJECT": None,
-        # }
-        pass
-
 
 class ActionShowBalance(Action):
     """Shows the balance of account"""
@@ -102,6 +83,26 @@ class ActionShowBalance(Action):
         return events
 
 
+class ActionInvest(Action):
+    """Invest in project."""
+    def name(self) -> Text:
+        """Unique identifier of the action"""
+        return "action_invest"
+
+    async def run(
+            self, dispatcher: CollectingDispatcher,
+            tracker: Tracker, domain: Dict
+        ) -> List[EventType]:
+        """Executes the custom action"""
+
+        # slots = {
+        #     "AA_CONTINUE_FORM": None,
+        #     "zz_confirm_form": None,
+        #     "PROJECT": None,
+        # }
+        pass
+
+
 class ActionWithdraw(Action):
     """Withdraw from wallet"""
 
@@ -115,19 +116,19 @@ class ActionWithdraw(Action):
         ) -> List[EventType]:
         """Executes the custom action"""
 
-        current_account_balance = tracker.get_slot("account_balance")
+        current_account_balance = int(tracker.get_slot("account_balance"))
 
-        withdrawal_amount = int(tracker.get_slot("withdrawal_amount"))
+        withdrawal_amount = int(tracker.get_slot("amount_of_money"))
 
         dispatcher.utter_message(
-            response="utter_withdrawal_amount_validated",
-            withdrawal_amount = withdrawal_amount
+            response="utter_withdrawal_success",
+            withdrawal_amount = f"{withdrawal_amount:,}",
         )
 
         # update slot account balance and withdrawal amount
         return [
             SlotSet("account_balance", current_account_balance - withdrawal_amount),
-            SlotSet("withdrawal_amount", None),
+            SlotSet("amount_of_money", None),
         ]
 
 
@@ -138,7 +139,7 @@ class ValidateWithdrawalForm(FormValidationAction):
         """Unique identifier of the action"""
         return "validate_withdrawal_form"
 
-    async def validate_withdrawal_amount(
+    async def validate_amount_of_money(
             self,
             slot_value: Any,
             dispatcher: CollectingDispatcher,
@@ -147,14 +148,16 @@ class ValidateWithdrawalForm(FormValidationAction):
         ) -> Dict[Text, Any]:
         """Validate the amount of money to withdraw"""
 
-        account_balance = tracker.get_slot("account_balance")
+        current_account_balance = tracker.get_slot("account_balance")
 
         withdrawal_amount = int(slot_value)
 
-        if withdrawal_amount > account_balance:
+        if withdrawal_amount > current_account_balance:
             dispatcher.utter_message(
                 response="utter_insufficient_balance",
+                withdrawal_amount = f"{withdrawal_amount:,}",
+                account_balance=f"{current_account_balance:,}",
             )
-            return {"withdrawal_amount": None}
+            return {"amount_of_money": None}
 
-        return {"withdrawal_amount": slot_value}
+        return {"amount_of_money": slot_value}

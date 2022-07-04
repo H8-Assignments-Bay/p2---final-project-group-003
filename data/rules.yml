@@ -14,6 +14,8 @@ rules:
 - rule: Submit withdrawal form
   condition:
   - active_loop: withdrawal_form
+  - slot_was_set:
+    - previous_form_name: null
   steps:
   - action: withdrawal_form
   - active_loop: null
