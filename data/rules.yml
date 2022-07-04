@@ -2,44 +2,59 @@ version: "3.1"
 
 rules:
 
+## TODO
+- rule: Activate withdrawal form
+  condition:
+  - active_loop: null
+  steps:
+  - intent: withdrawal
+  - action: withdrawal_form
+  - active_loop: withdrawal_form
+
+- rule: Submit withdrawal form
+  condition:
+  - active_loop: withdrawal_form
+  steps:
+  - action: withdrawal_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: validate_withdrawal_form
+  - action: action_withdrawal
+
+## COMPLETE
+- rule: Show balance
+  steps:
+  - intent: check_balance
+  - action: action_show_balance
+
+- rule: Greet the user back
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_help
+
 - rule: Say goodbye anytime the user says goodbye
   steps:
   - intent: goodbye
   - action: utter_goodbye
 
-- rule: Say 'I am a bot' anytime the user challenges
-  steps:
-  - intent: bot_challenge
-  - action: utter_iamabot
-  
-- rule: Ask the user to rephrase whenever they send a message with low NLU confidence
-  steps:
-  - intent: nlu_fallback
-  - action: utter_default
-
-- rule: answer out of scope
-  steps:
-  - intent: out_of_scope
-  - action: utter_out_of_scope
-    
-- rule: greet
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - action: utter_help
-  
-- rule: help
+- rule: Provide help for the user
   steps:
   - intent: help
   - action: utter_help
 
-- rule: thankyou
+- rule: Reply to thank you
   steps:
   - intent: thankyou
   - action: utter_noworries
-  
-- rule: Show balance
+
+- rule: Say 'I am a bot' anytime the user challenges
   steps:
-  - intent: check_balance
-  - action: action_show_balance
-        
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: Ask the user to rephrase whenever they send a message with low NLU confidence
+  steps:
+  - intent: nlu_fallback
+  - action: utter_please_rephrase

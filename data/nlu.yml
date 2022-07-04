@@ -1,6 +1,39 @@
 version: "3.1"
 
 nlu:
+- intent: withdrawal
+  examples: |
+    - saya ingin mencairkan dompet
+    - saya ingin menarik dana
+    - cairkan dompet
+    - cairkan saldo
+    - saya ingin mencairkan saldo
+    - mau tarik duit
+    - mau tarik uang
+    - tarik duit
+    - tarik saldo
+    - cairkan saldo rekening saya
+    - cairkan saldoku
+    - mau tarik saldo
+    - saya mau tarik saldo saya
+    - saya mau mencairkan saldo
+    - saya mau mencairkan saldo senilai [100000](withdrawal_amount)
+    - mau tarik dana [500000](withdrawal_amount)
+    - cairkan saldoku [100000](withdrawal_amount)
+    - tarik saldo senilai Rp[100000](withdrawal_amount)
+    - tarik uang Rp[800000](withdrawal_amount)
+    - cairkan saldo Rp[100000](withdrawal_amount)
+
+- intent: inform
+  examples: |
+    - Rp[100000](withdrawal_amount)
+    - [500000](withdrawal_amount)
+    - [50000](withdrawal_amount)
+    - Rp[100000](withdrawal_amount)
+    - Rp[500000](withdrawal_amount)
+    - [100000](withdrawal_amount) rupiah
+    - [1000000](withdrawal_amount) rupiah
+
 - intent: check_balance
   examples: |
     - cek saldo?
@@ -133,123 +166,6 @@ nlu:
     - saldo di akunku
     - saldo rekening di akun saya
     - saldo rekening di akunku
-
-- intent: greet
-  examples: |
-    - halo
-    - hi
-    - oy
-    - yo
-    - woi
-    - woy
-    - hello
-    - hallo
-    - hai
-    - hei
-    - selamat pagi
-    - selamat siang
-    - selamat malam
-    - halo yang disana
-    - selamat datang
-    - pagi
-    - siang
-    - malam
-    - sore
-    - assalamualaikum
-    - salam
-    - salom
-    - shalom
-    - ello
-    - hola
-    - hei hei
-    - hi hi
-    - hi hello
-    - hellow
-    - hi halo
-    - hei!
-    - halo!
-    - pagi!
-    - siang!
-    - malam!
-    - sore!
-    - selamat pagi!
-    - selamat siang!
-    - selamat malam!
-    - assalamualaikum wr. wb.
-    - assalamualaikum warahmatullahi wabarakatuh
-    - salam!
-    - salom!
-    - shalom!
-    - woy!
-    - woi!
-    - wey!
-    - wei!
-    - yo!
-    - oy!
-    - ey!
-    - selamat datang!
-    - hellow!
-    - hola
-    - hola!
-    - hi!
-    - salam sejahtera
-    - salam sejahtera!
-    - slmt pagi
-    - slmt pgi
-    - slmt siang
-    - slmt malam
-    - slmt sore
-    - slmt mlm
-    - mlm
-    - pgi
-    - siank
-
-- intent: goodbye
-  examples: |
-    - selamat tinggal
-    - selamat tinggal!
-    - bye
-    - bye!
-    - bye bye
-    - bye bye!
-    - dadah
-    - dadah!
-    - terima kasih
-    - terimakasih
-    - terimakasih!
-    - terima kasih!
-    - terimakasih banyak
-    - terimakasih banyak!
-    - terima kasih banyak
-    - terima kasih banyak!
-    - sampai sini saja
-    - selesai
-    - sudah
-    - sudah selesai
-    - udah
-    - dadah robot
-    - dadah bot
-    - dadah rasa bot
-    - senang berbicara dengan anda
-    - saya akan pergi
-    - cukup sampai disini
-    - aku selesai
-    - saya selesai
-    - sampai bertemu kembali
-    - sampai bertemu lagi
-    - saya rasa sudah cukup
-    - aku rasa sudah cukup
-    - saya rasa sudah sampai disini
-    - aku rasa sudah sampai disini
-    - sudah ya
-    - udah ya
-    - saya cukup puas
-    - aku cukup puas
-    - saya puas
-    - aku puas
-    - saya pergi
-    - aku pergi
-    - aku akan pergi
 
 - intent: affirm
   examples: |
@@ -404,6 +320,220 @@ nlu:
     - aku tdk yakin
     - bkn
 
+- intent: greet
+  examples: |
+    - halo
+    - hi
+    - oy
+    - yo
+    - woi
+    - woy
+    - hello
+    - hallo
+    - hai
+    - hei
+    - selamat pagi
+    - selamat siang
+    - selamat malam
+    - halo yang disana
+    - selamat datang
+    - pagi
+    - siang
+    - malam
+    - sore
+    - assalamualaikum
+    - salam
+    - salom
+    - shalom
+    - ello
+    - hola
+    - hei hei
+    - hi hi
+    - hi hello
+    - hellow
+    - hi halo
+    - hei!
+    - halo!
+    - pagi!
+    - siang!
+    - malam!
+    - sore!
+    - selamat pagi!
+    - selamat siang!
+    - selamat malam!
+    - assalamualaikum wr. wb.
+    - assalamualaikum warahmatullahi wabarakatuh
+    - salam!
+    - salom!
+    - shalom!
+    - woy!
+    - woi!
+    - wey!
+    - wei!
+    - yo!
+    - oy!
+    - ey!
+    - selamat datang!
+    - hellow!
+    - hola
+    - hola!
+    - hi!
+    - salam sejahtera
+    - salam sejahtera!
+    - slmt pagi
+    - slmt pgi
+    - slmt siang
+    - slmt malam
+    - slmt sore
+    - slmt mlm
+    - mlm
+    - pgi
+    - siank
+
+- intent: goodbye
+  examples: |
+    - selamat tinggal
+    - selamat tinggal!
+    - bye
+    - bye!
+    - bye bye
+    - bye bye!
+    - dadah
+    - dadah!
+    - terima kasih
+    - terimakasih
+    - terimakasih!
+    - terima kasih!
+    - terimakasih banyak
+    - terimakasih banyak!
+    - terima kasih banyak
+    - terima kasih banyak!
+    - sampai sini saja
+    - selesai
+    - sudah
+    - sudah selesai
+    - udah
+    - dadah robot
+    - dadah bot
+    - dadah rasa bot
+    - senang berbicara dengan anda
+    - saya akan pergi
+    - cukup sampai disini
+    - aku selesai
+    - saya selesai
+    - sampai bertemu kembali
+    - sampai bertemu lagi
+    - saya rasa sudah cukup
+    - aku rasa sudah cukup
+    - saya rasa sudah sampai disini
+    - aku rasa sudah sampai disini
+    - sudah ya
+    - udah ya
+    - saya cukup puas
+    - aku cukup puas
+    - saya puas
+    - aku puas
+    - saya pergi
+    - aku pergi
+    - aku akan pergi
+
+- intent: help
+  examples: |
+    - help!
+    - help
+    - bantuan
+    - saya butuh bantuan
+    - ada yang perlu di bantu lagi?
+    - ada yang ingin ada perlukan?
+    - apa yang anda butuhkan?
+    - beritahu saya apa yang anda butuhkan
+    - tolong saya
+    - tolong bantu saya
+    - tolong saya!
+    - tolong bantu saya!
+    - bantu saya!
+    - bantu saya
+    - bagaimana cara kerjanya?
+    - bagaimana caranya?
+    - caranya bagaimana?
+    - caranya gimana?
+    - gimana caranya?
+    - bisakah bantu saya?
+    - bisakah anda bantu saya?
+    - bagaimana cara memakai ini?
+    - gimana cara memakai ini?
+    - bagaimana cara pakai ini?
+    - gimana cara pakai ini?
+    - bagaimana cara memakainya?
+    - gimana cara memakainya?
+    - bagaimana cara pakainya?
+    - gimana cara pakainya?
+    - apa yang dapat anda lakukan?
+    - apa yang dapat kamu lakukan?
+    - kamu bisa apa?
+    - anda bisa apa?
+    - kamu bisa apa saja?
+    - anda bisa apa saja?
+    - tolong beritahu saya cara kerjanya
+    - tolong beritahu saya bagaimana caranya
+    - tolong beritahu saya gimana pakainya
+    - tolong ini bagaimana
+    - tolong ini gimana
+    - tolong saya tidak mengerti
+    - tolong saya ngga mengerti
+    - tolong saya gak mengerti
+    - tolong saya nda mengerti
+    - tolong saya kagak mengerti
+    - tolong saya kaga mengerti
+    - tolong saya tidak ngerti
+    - tolong saya ngga ngerti
+    - tolong saya gak ngerti
+    - tolong saya nda ngerti
+    - tolong saya kagak ngerti
+    - tolong saya kaga ngerti
+    - tolonk
+
+- intent: thankyou
+  examples: |
+    - makasih
+    - terimakasih
+    - terima kasih
+    - oh, baik terima kasih
+    - oh, baik terimakasih
+    - oke terima kasih
+    - oke terimakasih
+    - ini sangat membantu
+    - terima kasih dan selamat tinggal
+    - terimakasih dan selamat tinggal
+    - thanks
+    - thank you
+    - terimakasih ini membantu
+    - terima kasih ini membantu
+    - wow, terima kasih
+    - wow terimakasih
+    - terima asih
+    - terima kash
+    - selesai, terima kasih
+    - sudah selesai, terima aksih
+    - terima aksih
+    - sudah selesai, terima kasih
+    - kerja bagus
+    - sangat membantu sekali
+    - sangat membantu sekali, terima kasih
+    - mksh
+    - mksih
+    - trima kasih
+    - trima ksh
+    - terima kasih atas informasinya
+    - terimakasih atas informasinya
+    - baik terima kasih
+    - baik terimkasih
+    - informasi yang sangat bagus. terima kasih
+    - informasi yang sangat bagus. terimakasih
+    - informasi yang bagus, terima kasih
+    - informasi yang bagus, terimakasih
+    - informasi yg bagus, terimakasih
+
 - intent: bot_challenge
   examples: |
     - apakah kamu robot?
@@ -534,100 +664,3 @@ nlu:
     - apa anda yakin anda bot?
     - apa kamu yakin kamu robot?
     - apa anda yakin anda robot?
-
-- intent: thankyou
-  examples: |
-    - makasih
-    - terimakasih
-    - terima kasih
-    - oh, baik terima kasih
-    - oh, baik terimakasih
-    - oke terima kasih
-    - oke terimakasih
-    - ini sangat membantu
-    - terima kasih dan selamat tinggal
-    - terimakasih dan selamat tinggal
-    - thanks
-    - thank you
-    - terimakasih ini membantu
-    - terima kasih ini membantu
-    - wow, terima kasih
-    - wow terimakasih
-    - terima asih
-    - terima kash
-    - selesai, terima kasih
-    - sudah selesai, terima aksih
-    - terima aksih
-    - sudah selesai, terima kasih
-    - kerja bagus
-    - sangat membantu sekali
-    - sangat membantu sekali, terima kasih
-    - mksh
-    - mksih
-    - trima kasih
-    - trima ksh
-    - terima kasih atas informasinya
-    - terimakasih atas informasinya
-    - baik terima kasih
-    - baik terimkasih
-    - informasi yang sangat bagus. terima kasih
-    - informasi yang sangat bagus. terimakasih
-    - informasi yang bagus, terima kasih
-    - informasi yang bagus, terimakasih
-    - informasi yg bagus, terimakasih
-
-- intent: help
-  examples: |
-    - help!
-    - help
-    - bantuan
-    - saya butuh bantuan
-    - ada yang perlu di bantu lagi?
-    - ada yang ingin ada perlukan?
-    - apa yang anda butuhkan?
-    - beritahu saya apa yang anda butuhkan
-    - tolong saya
-    - tolong bantu saya
-    - tolong saya!
-    - tolong bantu saya!
-    - bantu saya!
-    - bantu saya
-    - bagaimana cara kerjanya?
-    - bagaimana caranya?
-    - caranya bagaimana?
-    - caranya gimana?
-    - gimana caranya?
-    - bisakah bantu saya?
-    - bisakah anda bantu saya?
-    - bagaimana cara memakai ini?
-    - gimana cara memakai ini?
-    - bagaimana cara pakai ini?
-    - gimana cara pakai ini?
-    - bagaimana cara memakainya?
-    - gimana cara memakainya?
-    - bagaimana cara pakainya?
-    - gimana cara pakainya?
-    - apa yang dapat anda lakukan?
-    - apa yang dapat kamu lakukan?
-    - kamu bisa apa?
-    - anda bisa apa?
-    - kamu bisa apa saja?
-    - anda bisa apa saja?
-    - tolong beritahu saya cara kerjanya
-    - tolong beritahu saya bagaimana caranya
-    - tolong beritahu saya gimana pakainya
-    - tolong ini bagaimana
-    - tolong ini gimana
-    - tolong saya tidak mengerti
-    - tolong saya ngga mengerti
-    - tolong saya gak mengerti
-    - tolong saya nda mengerti
-    - tolong saya kagak mengerti
-    - tolong saya kaga mengerti
-    - tolong saya tidak ngerti
-    - tolong saya ngga ngerti
-    - tolong saya gak ngerti
-    - tolong saya nda ngerti
-    - tolong saya kagak ngerti
-    - tolong saya kaga ngerti
-    - tolonk

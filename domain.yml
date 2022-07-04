@@ -1,33 +1,40 @@
 version: "3.1"
 
 intents:
-  - check_balance
-  - invest
-  - withdraw
-  - check_projects
-  - greet
-  - goodbye
+  # - invest
+  # - check_projects
+  - withdrawal
   - inform
+  - check_balance
   - affirm
   - deny
+  - greet
+  - goodbye
   - thankyou
   - bot_challenge
   - nlu_fallback
 
 entities:
-  - choice
-  - amount-of-money
+  - withdrawal_amount
 
 slots:
-  choice:
-    type: categorical
-    values:
-      - 1
-      - 2
-      - 3
+  withdrawal_amount:
+    influence_conversation: true
+    min_value: 0
+    max_value: 100_000_000
+    type: float
     mappings:
     - type: from_entity
-      entity: choice
+      entity: withdrawal_amount
+
+  account_balance:
+    type: float
+    influence_conversation: false
+    min_value: 0
+    max_value: 100_000_000
+    initial_value: 1_000_000
+    mappings:
+    - type: custom
 
   currency:
     type: any
@@ -38,35 +45,58 @@ slots:
 
 
 responses:
-  utter_out_of_scope:
-  - text: 'Mohon maaf, saya tidak bisa memproses permintaan anda. Ketik "help" untuk penggunaan bot ini.'
+  utter_withdrawal_amount_validated:
+  - text: Anda ingin menarik dana dari dompet sejumlah {currency}{withdrawal_amount}.
+
+  utter_ask_withdrawal_amount:
+  - text: Berapa jumlah penarikan dana yang anda inginkan?
+
+  utter_insufficient_balance:
+  - text: Mohon maaf, saldo dompet anda tidak cukup. Anda ingin menarik dompet sejumlah {currency}{withdrawal_amount}, sedangkan saldo anda sejumlah {currency}{account_balance}.
+
+  utter_submit_withdrawal:
+  - text: Saya akan memproses penarikan dana anda dengan segera
 
   utter_account_balance:
-  - text: Saldo dompet anda saat ini adalah {currency}{init_account_balance}.
+  - text: Saldo dompet anda saat ini adalah {currency}{account_balance}.
+
+  # utter_affirm:
+  # - text: 👍
+
+  # utter_ask_continue:
+  # - text: Apakah anda ingin lanjut?
 
   utter_greet:
   - text: Hi! Saya adalah asisten virtual anda!
+
   utter_goodbye:
   - text: "Bye"
   - text: "Terima kasih telah memakai layanan kami"
 
-  utter_ok:
-  - text: 👍
+  utter_help:
+  - text: "Saya bisa membantu anda dalam beberapa hal, seperti: \n- Berapa nilai saldo dompet saya sekarang? \n- Saya ingin mendanai \n- Saya ingin mencairkan saldo"
 
-  utter_ask_continue:
-  - text: Apakah anda ingin lanjut?
-
-  utter_default:
-  - text: Maaf, saya tidak mengerti permintaan anda. Mohon diulangi dengan bentuk kalimat lain.
+  utter_noworries:
+  - text: Senang bisa membantu :)
 
   utter_iamabot:
   - text: "Saya adalah asisten virtual anda, powered by Rasa."
 
-  utter_help:
-  - text: "Saya bisa membantu anda dalam beberapa hal, seperti: \n- Berapa nilai saldo dompet saya sekarang? \n- Saya ingin mendanai \n- Saya ingin mencairkan saldo"
+  utter_please_rephrase:
+  - text: Maaf, saya tidak mengerti permintaan anda. Mohon diulangi dengan bentuk kalimat lain.
+  - text: 'Mohon maaf, saya tidak bisa memproses permintaan anda. Ketik "help" untuk penggunaan bot ini.'
 
 actions:
+  - action_withdrawal
+  - utter_withdrawal_slots
+  - validate_withdrawal_form
   - action_show_balance
+
+forms:
+  withdrawal_form:
+    ignored_intents: [check_balance]
+    required_slots:
+    - withdrawal_amount
 
 session_config:
   session_expiration_time: 60
