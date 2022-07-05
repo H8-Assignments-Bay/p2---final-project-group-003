@@ -39,29 +39,6 @@ slots:
     - type: from_entity
       entity: PROJECT_CODE
 
-  # PROJECT_CODE:
-  #   type: categorical
-  #   influence_conversation: true
-  #   values:
-  #     - A
-  #     - B
-  #     - C
-  #   mappings:
-  #   - entity: PROJECT_CODE
-  #     type: from_entity
-  #     conditions:
-  #     - active_loop: invest_form
-  #       requested_slot: PROJECT_CODE
-  #   - intent:
-  #     - inform
-  #     - invest_form
-  #     type: from_text
-  #     conditions:
-  #     - active_loop: invest_form
-  #       requested_slot: PROJECT_CODE
-  #   - type: from_entity
-  #     entity: PROJECT_CODE
-
   PROJECT_LIST:
     type: list
     initial_value: [{"name": "REG506-AMD001", "total_pinjaman": 100_000_000, "slot_pendanaan": 57_500_000, "sisa_waktu_pendananaan": "2 hari lagi", "grade": "A", "rate": "14%", "durasi_pinjaman": "4 bulan", "tujuan": "invoice financing"}, {"name": "REG507-NVD005", "total_pinjaman": 100_000_000, "slot_pendanaan": 71_700_000, "sisa_waktu_pendananaan": "1 hari lagi", "grade": "C", "rate": "18%", "durasi_pinjaman": "4 bulan", "tujuan": "invoice financing"}, {"name": "REG508-INT023", "total_pinjaman": 70_000_000, "slot_pendanaan": 38_500_000, "sisa_waktu_pendananaan": "3 hari lagi", "grade": "C", "rate": "18%", "durasi_pinjaman": "3 bulan", "tujuan": "working capital financing"}]

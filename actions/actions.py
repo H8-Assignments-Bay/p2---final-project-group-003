@@ -103,7 +103,7 @@ class ActionInvest(Action):
         """Unique identifier of the action"""
         return "action_invest"
 
-    async def run(
+    def run(
             self, dispatcher: CollectingDispatcher,
             tracker: Tracker, domain: Dict
         ) -> List[EventType]:
@@ -113,15 +113,35 @@ class ActionInvest(Action):
 
         invest_amount = int(tracker.get_slot("amount_of_money"))
 
+        project_code = tracker.get_slot("PROJECT_CODE")
+        project_list = tracker.get_slot("PROJECT_LIST")
+
+        project_list_updated = project_list.copy()
+
+        # assign the project to be updated and its index
+        for num, project in enumerate(project_list_updated):
+            if project['name'] == project_code:
+                project_update = project
+                project_update_index = num
+                break
+
+        # update the project's slot_pendanaan
+        project_update['slot_pendanaan'] -= invest_amount
+
+        # update the project details in the project list
+        project_list[project_update_index] = project_update
+
         dispatcher.utter_message(
             response="utter_invest_success",
             invest_amount=f"{invest_amount:,}",
+            PROJECT_CODE=f"{project_code.upper()}",
         )
 
-        # update slot account balance and withdrawal amount
+        # update slots
         return [
             SlotSet("account_balance", current_account_balance - invest_amount),
             SlotSet("PROJECT_CODE", None),
+            SlotSet("PROJECT_LIST", project_list),
             SlotSet("amount_of_money", None),
         ]
 
@@ -203,7 +223,7 @@ class ActionWithdrawal(Action):
             withdrawal_amount=f"{withdrawal_amount:,}",
         )
 
-        # update slot account balance and withdrawal amount
+        # update slots
         return [
             SlotSet("account_balance", current_account_balance - withdrawal_amount),
             SlotSet("amount_of_money", None),
