@@ -76,12 +76,7 @@ slots:
     mappings:
     - type: custom
 
-
 responses:
-  # utter_project_chooser:
-  # - buttons:
-  # - title: ""
-
   utter_invest_success:
   - text: Pendanaan anda di proyek {PROJECT_CODE} sejumlah {currency}{invest_amount} berhasil.
 
