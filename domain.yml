@@ -1,0 +1,159 @@
+version: "3.1"
+
+intents:
+  - invest
+  - check_projects
+  - withdrawal
+  - inform
+  - check_balance
+  - affirm
+  - deny
+  - greet
+  - goodbye
+  - help
+  - thankyou
+  - bot_challenge
+  - nlu_fallback
+
+entities:
+  - amount_of_money
+  - PROJECT_CODE
+
+slots:
+  PROJECT_CODE:
+    type: text
+    influence_conversation: true
+    mappings:
+    - entity: PROJECT_CODE
+      type: from_entity
+      conditions:
+      - active_loop: invest_form
+        requested_slot: PROJECT_CODE
+    - intent:
+      - inform
+      - invest_form
+      type: from_text
+      conditions:
+      - active_loop: invest_form
+        requested_slot: PROJECT_CODE
+    - type: from_entity
+      entity: PROJECT_CODE
+
+  PROJECT_LIST:
+    type: list
+    initial_value: [{"name": "REG506-AMD001", "total_pinjaman": 100_000_000, "slot_pendanaan": 57_500_000, "sisa_waktu_pendananaan": "2 hari lagi", "grade": "A", "rate": "14%", "durasi_pinjaman": "4 bulan", "tujuan": "invoice financing"}, {"name": "REG507-NVD005", "total_pinjaman": 100_000_000, "slot_pendanaan": 71_700_000, "sisa_waktu_pendananaan": "1 hari lagi", "grade": "C", "rate": "18%", "durasi_pinjaman": "4 bulan", "tujuan": "invoice financing"}, {"name": "REG508-INT023", "total_pinjaman": 70_000_000, "slot_pendanaan": 38_500_000, "sisa_waktu_pendananaan": "3 hari lagi", "grade": "C", "rate": "18%", "durasi_pinjaman": "3 bulan", "tujuan": "working capital financing"}]
+    mappings:
+    - type: custom
+
+  amount_of_money:
+    type: float
+    influence_conversation: true
+    min_value: 0
+    max_value: 100_000_000
+    mappings:
+    - type: from_entity
+      entity: amount_of_money
+
+  # previous_form_name:
+  #   type: text
+  #   influence_conversation: true
+  #   mappings:
+  #   - type: custom
+
+  account_balance:
+    type: float
+    influence_conversation: false
+    min_value: 0
+    max_value: 100_000_000
+    initial_value: 1_000_000
+    mappings:
+    - type: custom
+
+  currency:
+    type: any
+    influence_conversation: false
+    initial_value: Rp
+    mappings:
+    - type: custom
+
+responses:
+  utter_invest_success:
+  - text: Pendanaan anda di proyek {PROJECT_CODE} sejumlah {currency}{invest_amount} berhasil.
+
+  utter_project_code_not_found:
+  - text: Mohon maaf, {PROJECT_CODE} tidak ada dalam daftar proyek aktif yang dapat anda danai.
+
+  utter_invest_insufficient_balance:
+  - text: Mohon maaf, saldo dompet anda tidak cukup. Anda ingin mendanai sejumlah {currency}{withdrawal_amount}, sedangkan saldo anda sejumlah {currency}{account_balance}.
+
+  utter_ask_invest_form_amount_of_money:
+  - text: Berapa jumlah dana dari dompet yang ingin anda gunakan untuk mendanai?
+
+  utter_ask_invest_form_PROJECT_CODE:
+  - text: Anda ingin mendanai ke proyek mana?
+
+  utter_show_projects:
+  - text: "Anda bisa mendanai proyek-proyek ini:\n{formatted_projects}"
+
+  utter_withdrawal_success:
+  - text: Penarikan dana dari dompet sejumlah {currency}{withdrawal_amount} berhasil.
+
+  utter_ask_withdrawal_form_amount_of_money:
+  - text: Berapa jumlah penarikan dana dari dompet yang anda inginkan?
+
+  utter_withdrawal_insufficient_balance:
+  - text: Mohon maaf, saldo dompet anda tidak cukup. Anda ingin menarik dompet sejumlah {currency}{withdrawal_amount}, sedangkan saldo anda sejumlah {currency}{account_balance}.
+
+  utter_account_balance:
+  - text: Saldo dompet anda saat ini adalah {currency}{account_balance}.
+
+  utter_ok:
+  - text: 👍
+
+  # utter_ask_continue:
+  # - text: Apakah anda ingin lanjut?
+
+  utter_greet:
+  - text: Hi! Saya adalah asisten virtual anda!
+
+  utter_goodbye:
+  - text: "Bye"
+  - text: "Terima kasih telah memakai layanan kami"
+
+  utter_help:
+  - text: "Saya bisa membantu anda dalam beberapa hal, seperti: \n- Berapa nilai saldo dompet saya sekarang? \n- Saya ingin mendanai \n- Saya ingin mencairkan saldo"
+
+  utter_noworries:
+  - text: Senang bisa membantu :)
+
+  utter_iamabot:
+  - text: "Saya adalah asisten virtual anda, powered by Rasa."
+
+  utter_please_rephrase:
+  - text: Maaf, saya tidak mengerti permintaan anda. Mohon diulangi dengan bentuk kalimat lain.
+  - text: 'Mohon maaf, saya tidak bisa memproses permintaan anda. Ketik "help" untuk penggunaan bot ini.'
+
+actions:
+  - action_invest
+  - validate_invest_form
+  - action_show_projects
+  - action_project_chooser
+  - action_withdrawal
+  - validate_withdrawal_form
+  - action_show_balance
+
+forms:
+  invest_form:
+    ignored_intents: [check_balance, withdrawal]
+    required_slots:
+    - PROJECT_CODE
+    - amount_of_money
+
+  withdrawal_form:
+    ignored_intents: [check_balance, invest]
+    required_slots:
+    - amount_of_money
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

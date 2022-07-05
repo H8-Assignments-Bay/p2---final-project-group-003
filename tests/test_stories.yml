@@ -1,0 +1,146 @@
+#### This file contains tests to evaluate that your bot behaves as expected.
+#### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
+
+stories:
+- story: cek saldo
+  steps:
+  - user: |
+      halo
+    intent: greet
+  - action: utter_greet
+  - action: utter_help
+  - user: |
+      saldo ada berapa
+    intent: check_balance
+  - action: action_show_balance
+
+- story: invest path 1
+  steps:
+  - user: |
+      hi
+    intent: greet
+  - action: utter_greet
+  - action: utter_help
+  - user: |
+      mau danain nih
+    intent: invest
+  - action: action_show_projects
+  - action: action_project_chooser
+  - user: |
+      [REG506-AMD001](PROJECT_CODE)
+  - intent: inform
+  - action: invest_form
+  - active_loop: invest_form
+  - user: |
+      [500000](amount_of_money)
+    intent: inform
+  - action: invest_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_invest
+  - user: |
+      makasih
+    intent: thankyou
+  - action: utter_noworries
+
+- story: invest path 2
+  steps:
+  - user: |
+      hello there!
+    intent: greet
+  - action: utter_greet
+  - action: utter_help
+  - user: |
+      mau danain nih ada [500000](amount_of_money)
+    intent: invest
+  - action: action_show_projects
+  - action: action_project_chooser
+  - user: |
+      [REG506-AMD001](PROJECT_CODE)
+  - intent: inform
+  - action: invest_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_invest
+  - user: |
+      mantap
+    intent: thankyou
+  - action: utter_noworries
+
+- story: tarik duit path 1
+  steps:
+  - user: |
+      yooo
+    intent: greet
+  - action: utter_greet
+  - action: utter_help
+  - user: |
+      mau tarik duit dong
+    intent: withdrawal
+  - action: withdrawal_form
+  - active_loop: withdrawal_form
+  - user: |
+      [500000](amount_of_money)
+  - intent: inform
+  - action: withdrawal_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_withdrawal
+  - user: |
+      thanks
+    intent: thankyou
+  - action: utter_noworries
+
+- story: tarik duit path 2
+  steps:
+  - user: |
+      halo
+    intent: greet
+  - action: utter_greet
+  - action: utter_help
+  - user: |
+      mau tarik duit dong [50000000000](amount_of_money)
+    intent: withdrawal
+  - action: withdrawal_form
+  - active_loop: withdrawal_form
+  - user: |
+      [10000](amount_of_money)
+  - intent: inform
+  - action: withdrawal_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_withdrawal
+  - user: |
+      maacih
+    intent: thankyou
+  - action: utter_noworries
+
+
+- story: liat proyek
+  steps:
+  - user: |
+      liat dong ada proyek apa
+    intent: check_projects
+  - action: action_show_projects
+  - user: |
+      wokee
+    intent: affirm
+  - action: utter_ok
+
+- story: say goodbye
+  steps:
+  - user: |
+      bye-bye!
+    intent: goodbye
+  - action: utter_goodbye
+
+- story: bot challenge
+  steps:
+  - user: |
+      are you a bot?
+    intent: bot_challenge
+  - action: utter_iamabot
