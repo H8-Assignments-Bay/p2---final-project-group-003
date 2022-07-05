@@ -3,6 +3,34 @@ version: "3.1"
 rules:
 
 ## TODO
+## COMPLETE
+- rule: Activate invest form
+  condition:
+  - active_loop: null
+  - slot_was_set:
+    - PROJECT_CODE
+  steps:
+  - intent: invest
+  - action: invest_form
+  - active_loop: invest_form
+
+- rule: Submit invest form
+  condition:
+  - active_loop: invest_form
+  # - slot_was_set:
+    # - previous_form_name: null
+  steps:
+  - action: invest_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_invest
+
+- rule: Show projects
+  steps:
+  - intent: check_projects
+  - action: action_show_projects
+
 - rule: Activate withdrawal form
   condition:
   - active_loop: null
@@ -14,14 +42,13 @@ rules:
 - rule: Submit withdrawal form
   condition:
   - active_loop: withdrawal_form
-  - slot_was_set:
-    - previous_form_name: null
+  # - slot_was_set:
+    # - previous_form_name: null
   steps:
   - action: withdrawal_form
   - active_loop: null
   - slot_was_set:
     - requested_slot: null
-  - action: validate_withdrawal_form
   - action: action_withdrawal
 
 ## COMPLETE

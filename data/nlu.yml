@@ -9,29 +9,48 @@ nlu:
     - mau mendanai sebuah proyek
     - mau mendanai sebuah project
     - mau berinvestasi ke [REG506-AMD001](PROJECT_CODE)
-    - mau mendanai proyek [REG850-FIK185](PROJECT_CODE)
+    - mau mendanai proyek [REG138-RLS886](PROJECT_CODE)
     - mau mendanai project [REG205-YQZ028](PROJECT_CODE)
-    - mau mendanai project [REG853-BMJ085](PROJECT_CODE) sebesar [1000000](invest_amount)
-    - mau mendanai [1000000](invest_amount)
-    - mau investasi 1000000](invest_amount)
+    - mau mendanai project [REG853-BMJ085](PROJECT_CODE) sebesar [1700000](amount_of_money)
+    - mau mendanai [6600000](amount_of_money)
+    - mau investasi [7300000](amount_of_money)
     - saya ingin menanamkan modal
     - mau menanamkan modal
     - mau modalin proyek
-    - pendanaan modal ke [REG850-FIK185](PROJECT_CODE)
-    - investasi ke [REG850-FIK185](PROJECT_CODE)
-    - mendanai proyek [REG850-FIK185](PROJECT_CODE)
-    - penamanan modal ke [REG850-FIK185](PROJECT_CODE)
-    - pendanaan uang ke proyek [REG850-FIK185](PROJECT_CODE)
-    - pendanaan uang ke project [REG850-FIK185](PROJECT_CODE)
-    - mau danain proyek [REG850-FIK185](PROJECT_CODE)
-    - mau danain project [REG850-FIK185](PROJECT_CODE)
-    - mau modalin proyek [REG850-FIK185](PROJECT_CODE)
-    - mau modalin project [REG850-FIK185](PROJECT_CODE)
-    - mau investasi ke proyek [REG850-FIK185](PROJECT_CODE)
-    - mau investasi ke project [REG850-FIK185](PROJECT_CODE)
-    - saya mau menanam modal ke [REG850-FIK185](PROJECT_CODE)
-    - saya mau berinvestasi ke [REG850-FIK185](PROJECT_CODE)
-    - saya ingin mendanai proyek [REG850-FIK185](PROJECT_CODE)
+    - pendanaan modal ke [REG650-VTC534](PROJECT_CODE)
+    - investasi ke [REG327-SCL896](PROJECT_CODE)
+    - mendanai proyek [REG218-VVP675](PROJECT_CODE)
+    - penamanan modal ke [REG522-FCE107](PROJECT_CODE)
+    - pendanaan uang ke proyek [REG994-BQQ247](PROJECT_CODE)
+    - pendanaan uang ke project [REG653-PYM968](PROJECT_CODE)
+    - mau danain proyek [REG852-CNQ169](PROJECT_CODE)
+    - mau danain project [REG375-HWW446](PROJECT_CODE)
+    - mau modalin proyek [REG924-UTD319](PROJECT_CODE)
+    - mau modalin project [REG459-OFU833](PROJECT_CODE)
+    - mau investasi ke proyek [REG545-RXO958](PROJECT_CODE)
+    - mau investasi ke project [REG104-UAY617](PROJECT_CODE)
+    - saya mau menanam modal ke [REG283-YSC180](PROJECT_CODE)
+    - saya mau berinvestasi ke [REG195-CAQ132](PROJECT_CODE)
+    - saya ingin mendanai proyek [REG963-RBL198](PROJECT_CODE)
+    - saya mau invest nih
+    - kalau mau invest gimana ya
+    - cara taruh modal bagaimana
+    - saya ada modal, mau investasi di proyek
+    - saya ada dana mau ditaruh
+    - saya mau meminjamkan uang
+    - uang saya nganggur, mau ditaruh
+
+- intent: check_projects
+  examples: |
+    - ada proyek apa aja?
+    - bisa taruh dana di mana?
+    - bisa invest di mana?
+    - ada pilihan produk apa saja?
+    - proyeknya ada apa saja?
+    - proyeknya ada apa aja?
+    - bisa ngasih modal kemana?
+    - bisa taruh modal di mana?
+    - dimana saja saya bisa invest?
 
 - intent: withdrawal
   examples: |
@@ -49,22 +68,72 @@ nlu:
     - mau tarik saldo
     - saya mau tarik saldo saya
     - saya mau mencairkan saldo
+    - saya mau mencairkan saldo senilai [1900000](amount_of_money)
+    - cairin saldo dong
+    - cairin dana dong
+    - carikan saldo dong
+    - carikan dana dong
+    - tolong, saya ingin mencaikan dana saya
+    - tolong, saya ingin mencairkan saldo saya
+    - tolong, saya ingin mencairkan rekening saya
+    - tolong, cairkan saldo saya
+    - tolong, cairkan dana saya
+    - tolong, carikan rekening saya
+    - mau cariin saldo
+    - mau cairin dana
+    - mau cairin rekening
+    - ingin mencarikan dana
+    - ingin mencarikan saldo
+    - ingin mencarikan rekening
+    - tarik rekening saya
+    - saya ingin mencarikan saldo saya semua
+    - tarik saldo saya
+    - tarik dana saya
+    - tarik saldo rekening saya
+    - mau ambil semua dana saya
+    - mau ambil semua saldo saya
+    - ingin mencarikan saldoku
+    - tolong, carikan saldoku
+    - tolong, carikan saldo rekeningku
+    - tolong, saya ingin mencaikan dana saya senilai [2900000](amount_of_money)
+    - tolong, saya ingin mencairkan saldo saya senilai [6900000](amount_of_money)
+    - tolong, saya ingin mencairkan rekening saya senilai [300000](amount_of_money)
+    - carikan saldo saya senilai [1500000](amount_of_money)
+    - ingin mencarikan saldo saya sebesar [1500000](amount_of_money)
     - saya mau mencairkan saldo senilai [100000](amount_of_money)
     - mau tarik dana [500000](amount_of_money)
     - cairkan saldoku [100000](amount_of_money)
-    - tarik saldo senilai Rp[100000](amount_of_money)
-    - tarik uang Rp[800000](amount_of_money)
-    - cairkan saldo Rp[100000](amount_of_money)
+    - tarik saldo senilai Rp [100000](amount_of_money)
+    - tarik uang Rp [800000](amount_of_money)
+    - cairkan saldo Rp [100000](amount_of_money)
 
 - intent: inform
   examples: |
-    - Rp[100000](amount_of_money)
+    - Rp [3200000](amount_of_money)
     - [500000](amount_of_money)
     - [50000](amount_of_money)
-    - Rp[100000](amount_of_money)
-    - Rp[500000](amount_of_money)
-    - [100000](amount_of_money) rupiah
-    - [1000000](amount_of_money) rupiah
+    - Rp [45800000](amount_of_money)
+    - Rp [500000](amount_of_money)
+    - [5600000](amount_of_money) rupiah
+    - [700000](amount_of_money) rupiah
+    - [REG506-AMD001](PROJECT_CODE)
+    - [1500000](amount_of_money) rupiah
+    - Rp [1500000](amount_of_money)
+    - [REG650-VTC534](PROJECT_CODE)
+    - [REG327-SCL896](PROJECT_CODE)
+    - [REG218-VVP675](PROJECT_CODE)
+    - [REG522-FCE107](PROJECT_CODE)
+    - [REG994-BQQ247](PROJECT_CODE)
+    - [REG653-PYM968](PROJECT_CODE)
+    - [REG852-CNQ169](PROJECT_CODE)
+    - [REG375-HWW446](PROJECT_CODE)
+    - [REG924-UTD319](PROJECT_CODE)
+    - [REG459-OFU833](PROJECT_CODE)
+    - [REG545-RXO958](PROJECT_CODE)
+    - [REG104-UAY617](PROJECT_CODE)
+    - [REG283-YSC180](PROJECT_CODE)
+    - [REG195-CAQ132](PROJECT_CODE)
+    - [REG963-RBL198](PROJECT_CODE)
 
 - intent: check_balance
   examples: |

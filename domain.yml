@@ -2,7 +2,7 @@ version: "3.1"
 
 intents:
   - invest
-  # - check_projects
+  - check_projects
   - withdrawal
   - inform
   - check_balance
@@ -17,22 +17,71 @@ intents:
 
 entities:
   - amount_of_money
+  - PROJECT_CODE
 
 slots:
+  PROJECT_CODE:
+    type: text
+    influence_conversation: true
+    mappings:
+    - entity: PROJECT_CODE
+      type: from_entity
+      conditions:
+      - active_loop: invest_form
+        requested_slot: PROJECT_CODE
+    - intent:
+      - inform
+      - invest_form
+      type: from_text
+      conditions:
+      - active_loop: invest_form
+        requested_slot: PROJECT_CODE
+    - type: from_entity
+      entity: PROJECT_CODE
+
+  # PROJECT_CODE:
+  #   type: categorical
+  #   influence_conversation: true
+  #   values:
+  #     - A
+  #     - B
+  #     - C
+  #   mappings:
+  #   - entity: PROJECT_CODE
+  #     type: from_entity
+  #     conditions:
+  #     - active_loop: invest_form
+  #       requested_slot: PROJECT_CODE
+  #   - intent:
+  #     - inform
+  #     - invest_form
+  #     type: from_text
+  #     conditions:
+  #     - active_loop: invest_form
+  #       requested_slot: PROJECT_CODE
+  #   - type: from_entity
+  #     entity: PROJECT_CODE
+
+  PROJECT_LIST:
+    type: list
+    initial_value: [{"name": "REG506-AMD001", "total_pinjaman": 100_000_000, "slot_pendanaan": 57_500_000, "sisa_waktu_pendananaan": "2 hari lagi", "grade": "A", "rate": "14%", "durasi_pinjaman": "4 bulan", "tujuan": "invoice financing"}, {"name": "REG507-NVD005", "total_pinjaman": 100_000_000, "slot_pendanaan": 71_700_000, "sisa_waktu_pendananaan": "1 hari lagi", "grade": "C", "rate": "18%", "durasi_pinjaman": "4 bulan", "tujuan": "invoice financing"}, {"name": "REG508-INT023", "total_pinjaman": 70_000_000, "slot_pendanaan": 38_500_000, "sisa_waktu_pendananaan": "3 hari lagi", "grade": "C", "rate": "18%", "durasi_pinjaman": "3 bulan", "tujuan": "working capital financing"}]
+    mappings:
+    - type: custom
+
   amount_of_money:
+    type: float
     influence_conversation: true
     min_value: 0
     max_value: 100_000_000
-    type: float
     mappings:
     - type: from_entity
       entity: amount_of_money
 
-  previous_form_name:
-    type: text
-    influence_conversation: true
-    mappings:
-    - type: custom
+  # previous_form_name:
+  #   type: text
+  #   influence_conversation: true
+  #   mappings:
+  #   - type: custom
 
   account_balance:
     type: float
@@ -52,20 +101,42 @@ slots:
 
 
 responses:
+  # utter_project_chooser:
+  # - buttons:
+  # - title: ""
+
+  utter_invest_success:
+  - text: Pendanaan anda di proyek {PROJECT_CODE} sejumlah {currency}{invest_amount} berhasil.
+
+  utter_project_code_not_found:
+  - text: Mohon maaf, {PROJECT_CODE} tidak ada dalam daftar proyek aktif yang dapat anda danai.
+
+  utter_invest_insufficient_balance:
+  - text: Mohon maaf, saldo dompet anda tidak cukup. Anda ingin mendanai sejumlah {currency}{withdrawal_amount}, sedangkan saldo anda sejumlah {currency}{account_balance}.
+
+  utter_ask_invest_form_amount_of_money:
+  - text: Berapa jumlah dana dari dompet yang ingin anda gunakan untuk mendanai?
+
+  utter_ask_invest_form_PROJECT_CODE:
+  - text: Anda ingin mendanai ke proyek mana?
+
+  utter_show_projects:
+  - text: "Anda bisa mendanai proyek-proyek ini:\n{formatted_projects}"
+
   utter_withdrawal_success:
   - text: Penarikan dana dari dompet sejumlah {currency}{withdrawal_amount} berhasil.
 
   utter_ask_withdrawal_form_amount_of_money:
-  - text: Berapa jumlah penarikan dana yang anda inginkan?
+  - text: Berapa jumlah penarikan dana dari dompet yang anda inginkan?
 
-  utter_insufficient_balance:
+  utter_withdrawal_insufficient_balance:
   - text: Mohon maaf, saldo dompet anda tidak cukup. Anda ingin menarik dompet sejumlah {currency}{withdrawal_amount}, sedangkan saldo anda sejumlah {currency}{account_balance}.
 
   utter_account_balance:
   - text: Saldo dompet anda saat ini adalah {currency}{account_balance}.
 
-  # utter_affirm:
-  # - text: 👍
+  utter_ok:
+  - text: 👍
 
   # utter_ask_continue:
   # - text: Apakah anda ingin lanjut?
@@ -91,12 +162,21 @@ responses:
   - text: 'Mohon maaf, saya tidak bisa memproses permintaan anda. Ketik "help" untuk penggunaan bot ini.'
 
 actions:
+  - action_invest
+  - validate_invest_form
+  - action_show_projects
+  - action_project_chooser
   - action_withdrawal
-  - utter_withdrawal_slots
   - validate_withdrawal_form
   - action_show_balance
 
 forms:
+  invest_form:
+    ignored_intents: [check_balance, withdrawal]
+    required_slots:
+    - PROJECT_CODE
+    - amount_of_money
+
   withdrawal_form:
     ignored_intents: [check_balance, invest]
     required_slots:

@@ -23,61 +23,75 @@ from rasa_sdk.events import (
     UserUtteranceReverted,
 )
 
-projects_list = {
-    "project_1": {
-        "name": "REG506-AMD001",
-        "total_pinjaman": 100_000_000,
-        "slot_pendanaan": 57_500_000,
-        "sisa_waktu_pendananaan": "2 hari lagi",
-        "grade": "A",
-        "rate": "14%",
-        "durasi_pinjaman": "4 bulan",
-        "tujuan": "invoice financing",
-    },
-    "project_2": {
-        "name": "REG507-NVD005",
-        "total_pinjaman": 100_000_000,
-        "slot_pendanaan": 71_700_000,
-        "sisa_waktu_pendananaan": "1 hari lagi",
-        "grade": "C",
-        "rate": "18%",
-        "durasi_pinjaman": "4 bulan",
-        "tujuan": "invoice financing",
-    },
-    "project_3": {
-        "name": "REG508-INT023",
-        "total_pinjaman": 70_000_000,
-        "slot_pendanaan": 38_500_000,
-        "sisa_waktu_pendananaan": "3 hari lagi",
-        "grade": "C",
-        "rate": "18%",
-        "durasi_pinjaman": "3 bulan",
-        "tujuan": "working capital financing",
-    },
-}
 
-
-
-class ActionShowBalance(Action):
-    """Shows the balance of account"""
+class ActionProjectChooser(Action):
+    """Lists the contents of then known_recipients slot"""
 
     def name(self) -> Text:
         """Unique identifier of the action"""
-        return "action_show_balance"
+        return "action_project_chooser"
 
-    def run(
+    async def run(
             self, dispatcher: CollectingDispatcher,
             tracker: Tracker, domain: Dict
         ) -> List[EventType]:
         """Executes the custom action"""
 
-        # show bank account balance
-        current_account_balance = tracker.get_slot("account_balance")
-        dispatcher.utter_message(
-            response="utter_account_balance",
-            account_balance=f"{current_account_balance:,}",
-        )
+        project_list = tracker.get_slot("PROJECT_LIST")
+        project_code_list = [project['name'] for project in project_list]
 
+        buttons = []
+        for num, project_code in enumerate(project_code_list):
+            title = project_code
+            payload = f'inform{{"PROJECT_CODE": "{project_code}"}}'
+            buttons.append({"title": title, "payload": payload})
+
+        dispatcher.utter_message(
+            response="utter_ask_invest_form_PROJECT_CODE",
+            buttons=buttons,
+        )
+        events = []
+
+        return events
+
+
+class ActionShowProjects(Action):
+    """Lists the contents of then known_recipients slot"""
+
+    def name(self) -> Text:
+        """Unique identifier of the action"""
+        return "action_show_projects"
+
+    async def run(
+            self, dispatcher: CollectingDispatcher,
+            tracker: Tracker, domain: Dict
+        ) -> List[EventType]:
+        """Executes the custom action"""
+
+        project_list = tracker.get_slot("PROJECT_LIST")
+        currency = tracker.get_slot("currency")
+
+        project_formatted_list = []
+        for num, project in enumerate(project_list):
+            project_formatted_list.append(
+                f"{50 * '-'}\n" \
+                + f"{project['name']}\n" \
+                + f"Tujuan peminjaman: {project['tujuan']}\n" \
+                + f"Bunga: {project['rate']} | Durasi pinjaman: {project['durasi_pinjaman']}\n" \
+                + f"Total pinjaman: {currency}{project['total_pinjaman']:,}\n" \
+                + f"Slot pendanaan: {currency}{project['slot_pendanaan']:,}\n" \
+                + f"Sisa waktu pendanaan: {project['sisa_waktu_pendananaan']}\n" \
+                + "\n"
+            )
+
+        project_formatted_all = ''
+        for project_formatted in project_formatted_list:
+            project_formatted_all += project_formatted
+
+        dispatcher.utter_message(
+            response="utter_show_projects",
+            formatted_projects=f"{project_formatted_all}"
+        )
         events = []
 
         return events
@@ -95,15 +109,79 @@ class ActionInvest(Action):
         ) -> List[EventType]:
         """Executes the custom action"""
 
-        # slots = {
-        #     "AA_CONTINUE_FORM": None,
-        #     "zz_confirm_form": None,
-        #     "PROJECT": None,
-        # }
-        pass
+        current_account_balance = int(tracker.get_slot("account_balance"))
+
+        invest_amount = int(tracker.get_slot("amount_of_money"))
+
+        dispatcher.utter_message(
+            response="utter_invest_success",
+            invest_amount=f"{invest_amount:,}",
+        )
+
+        # update slot account balance and withdrawal amount
+        return [
+            SlotSet("account_balance", current_account_balance - invest_amount),
+            SlotSet("PROJECT_CODE", None),
+            SlotSet("amount_of_money", None),
+        ]
 
 
-class ActionWithdraw(Action):
+class ValidateInvestForm(FormValidationAction):
+    """Validates Slots of the invest_form"""
+
+    def name(self) -> Text:
+        """Unique identifier of the action"""
+        return "validate_invest_form"
+
+    async def validate_PROJECT_CODE(
+            self,
+            slot_value: Any,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: DomainDict,
+        ) -> Dict[Text, Any]:
+        """Validate the value of the PROJECT_CODE slot."""
+
+        project_code = slot_value.lower()
+
+        project_list = tracker.get_slot("PROJECT_LIST")
+        project_code_list = [project['name'].lower() for project in project_list]
+
+        if project_code.lower() not in project_code_list:
+            dispatcher.utter_message(
+                response="utter_project_code_not_found",
+                PROJECT_CODE=project_code.upper(),
+            )
+            return {"PROJECT_CODE": None}
+        
+        return {"PROJECT_CODE": slot_value}
+
+    async def validate_amount_of_money(
+            self,
+            slot_value: Any,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: DomainDict,
+        ) -> Dict[Text, Any]:
+        """Validate the amount of money to withdraw"""
+
+        current_account_balance = tracker.get_slot("account_balance")
+
+        invest_amount = int(slot_value)
+
+        if invest_amount > current_account_balance:
+            dispatcher.utter_message(
+                response="utter_withdrawal_insufficient_balance",
+                invest_amount=f"{invest_amount:,}",
+                account_balance=f"{current_account_balance:,}",
+            )
+            return {"amount_of_money": None}
+
+        return {"amount_of_money": slot_value}
+
+
+## COMPLETE
+class ActionWithdrawal(Action):
     """Withdraw from wallet"""
 
     def name(self) -> Text:
@@ -122,7 +200,7 @@ class ActionWithdraw(Action):
 
         dispatcher.utter_message(
             response="utter_withdrawal_success",
-            withdrawal_amount = f"{withdrawal_amount:,}",
+            withdrawal_amount=f"{withdrawal_amount:,}",
         )
 
         # update slot account balance and withdrawal amount
@@ -154,10 +232,36 @@ class ValidateWithdrawalForm(FormValidationAction):
 
         if withdrawal_amount > current_account_balance:
             dispatcher.utter_message(
-                response="utter_insufficient_balance",
-                withdrawal_amount = f"{withdrawal_amount:,}",
+                response="utter_withdrawal_insufficient_balance",
+                withdrawal_amount=f"{withdrawal_amount:,}",
                 account_balance=f"{current_account_balance:,}",
             )
             return {"amount_of_money": None}
 
         return {"amount_of_money": slot_value}
+
+
+class ActionShowBalance(Action):
+    """Shows the balance of account"""
+
+    def name(self) -> Text:
+        """Unique identifier of the action"""
+        return "action_show_balance"
+
+    def run(
+            self, dispatcher: CollectingDispatcher,
+            tracker: Tracker, domain: Dict
+        ) -> List[EventType]:
+        """Executes the custom action"""
+
+        # show bank account balance
+        current_account_balance = tracker.get_slot("account_balance")
+        dispatcher.utter_message(
+            response="utter_account_balance",
+            account_balance=f"{current_account_balance:,}",
+        )
+
+        events = []
+
+        return events
+
