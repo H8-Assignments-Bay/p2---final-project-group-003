@@ -127,7 +127,7 @@ responses:
   - text: Senang bisa membantu :)
 
   utter_iamabot:
-  - text: "Saya adalah asisten virtual anda, powered by Rasa."
+  - text: "Saya adalah Fintbot, asisten virtual anda."
 
   utter_please_rephrase:
   - text: Maaf, saya tidak mengerti permintaan anda. Mohon diulangi dengan bentuk kalimat lain.
