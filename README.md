@@ -2,7 +2,7 @@
 
 <div align="center">
 
-# Fintbot - (Fintech Chat Bot)
+# Fintbot - (Fintech Chatbot)
 
 [Introduction](#introduction) • [Installation](#installation) • [Screenshots](#demonstration-on-telegram) • [Contributors](#contributors)
 
@@ -19,7 +19,7 @@ This project is created as a collaboration by a group of students in Hacktiv8 Fu
 ---
 
 ### Table of Contents
-- [Fintbot - (Fintech Chat Bot)](#fintbot---fintech-chat-bot)
+- [Fintbot - (Fintech Chatbot)](#fintbot---fintech-chatbot)
     - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)
     - [Demonstration on telegram](#demonstration-on-telegram)
@@ -43,7 +43,7 @@ Looking at the situation, we created a ChatBot so that lenders could easily fund
 
 Since they're already used to how their messaging applications work, they would feel comfortable using the app, which would reduce the need of familiarizing with a new application.
 
-In this project, we created our Chat bot to use Indonesian Language, however this could be adjusted to other languages.
+In this project, we created our Chatbot to understand and use Indonesian Language, however this could be modified to other languages.
 
 Fintbot is the name of our chatbot name that functions to help lenders in a P2P Lending company. Fintbot assists lenders with funding related activities easily and quickly, such as check balances, fund projects, and withdraw funds.
 
