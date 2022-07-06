@@ -25,7 +25,7 @@ stories:
   - slot_was_set:
     - requested_slot: null
   - action: action_invest
-  - intent: thankyou  # predicted: help: mantap
+  - intent: thankyou  # predicted: affirm: mantap
   - action: utter_noworries
 - story: tarik duit path 1 (./tests/test_stories.yml)
   steps:
@@ -104,7 +104,7 @@ stories:
   - intent: greet
   - action: utter_greet
   - action: action_listen  # predicted: utter_help
-  - intent: mood_unhappy  # predicted: deny: not good
+  - intent: mood_unhappy  # predicted: bot_challenge: not good
   - action: utter_cheer_up  # predicted: action_show_projects
   - action: utter_did_that_help  # predicted: action_listen
   - intent: affirm
@@ -114,17 +114,17 @@ stories:
   - intent: greet
   - action: utter_greet
   - action: action_listen  # predicted: utter_help
-  - intent: mood_unhappy  # predicted: deny: not good
+  - intent: mood_unhappy  # predicted: bot_challenge: not good
   - action: utter_cheer_up  # predicted: action_show_projects
   - action: utter_did_that_help  # predicted: action_listen
-  - intent: deny  # predicted: greet: not really
+  - intent: deny  # predicted: bot_challenge: not really
   - action: utter_goodbye  # predicted: utter_ok
 - story: sad path 3 (./env/lib/python3.8/site-packages/rasa/cli/initial_project/tests/test_stories.yml)
   steps:
   - intent: greet
   - action: utter_greet
   - action: action_listen  # predicted: utter_help
-  - intent: mood_unhappy  # predicted: nlu_fallback: very terrible
+  - intent: mood_unhappy  # predicted: thankyou: very terrible
   - action: utter_cheer_up  # predicted: action_show_projects
   - action: utter_did_that_help  # predicted: action_listen
   - intent: deny

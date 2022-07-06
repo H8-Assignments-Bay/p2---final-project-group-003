@@ -114,7 +114,7 @@ responses:
   # - text: Apakah anda ingin lanjut?
 
   utter_greet:
-  - text: Hi! Saya adalah asisten virtual anda!
+  - text: Hai! Saya adalah Fintbot, asisten virtual anda.
 
   utter_goodbye:
   - text: "Bye"
