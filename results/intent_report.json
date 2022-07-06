@@ -1,16 +1,16 @@
 {
-  "bot_challenge": {
+  "check_projects": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 128,
+    "support": 9,
     "confused_with": {}
   },
-  "inform": {
+  "invest": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 25,
+    "support": 36,
     "confused_with": {}
   },
   "help": {
@@ -20,32 +20,11 @@
     "support": 53,
     "confused_with": {}
   },
-  "thankyou": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 38,
-    "confused_with": {}
-  },
-  "greet": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 66,
-    "confused_with": {}
-  },
   "affirm": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
     "support": 82,
-    "confused_with": {}
-  },
-  "goodbye": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 36,
     "confused_with": {}
   },
   "deny": {
@@ -55,7 +34,21 @@
     "support": 62,
     "confused_with": {}
   },
-  "invest": {
+  "thankyou": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 38,
+    "confused_with": {}
+  },
+  "bot_challenge": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 128,
+    "confused_with": {}
+  },
+  "goodbye": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
@@ -69,18 +62,25 @@
     "support": 52,
     "confused_with": {}
   },
-  "check_projects": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 9,
-    "confused_with": {}
-  },
   "check_balance": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
     "support": 130,
+    "confused_with": {}
+  },
+  "greet": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 66,
+    "confused_with": {}
+  },
+  "inform": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 25,
     "confused_with": {}
   },
   "accuracy": 1.0,

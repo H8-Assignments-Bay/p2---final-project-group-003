@@ -1,16 +1,16 @@
 {
-  "PROJECT_CODE": {
-    "precision": 0.0,
-    "recall": 0.0,
-    "f1-score": 0.0,
-    "support": 2,
-    "confused_with": {}
-  },
   "amount_of_money": {
     "precision": 0.0,
     "recall": 0.0,
     "f1-score": 0.0,
     "support": 4,
+    "confused_with": {}
+  },
+  "PROJECT_CODE": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 2,
     "confused_with": {}
   },
   "micro avg": {
