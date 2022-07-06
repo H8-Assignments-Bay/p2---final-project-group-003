@@ -8,11 +8,6 @@ dependencies:
   - python=3.9
   - pip
   - ipykernel
-  - tensorflow
-  - nltk
-  - nltk_data
-  - spacy
-  - spacy-model-en_core_web_md
 
   - pip:
     - PySastrawi
