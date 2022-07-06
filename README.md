@@ -4,17 +4,18 @@
 
 This Final Project is the project created by a group who participates in Hacktiv8 Full Time Data Science Program. Final Project point itself is for the students to establish their skill and knowledge in their studies.  
 
+![logo 16x9](https://user-images.githubusercontent.com/69398229/177583344-779813fd-056d-425a-b104-0daff8fd96e4.png)
+
 ## About
 
 Peer-to-Peer lending or P2P lending permits people and organizations to acquire and loan cash to one another. It works by coordinating lenders with banks through internet based stages or offline brokers. Using this situation, we make a ChatBot for easier ways for the lenders to invest their money. Our Chat bot uses Indonesian Language in this demo.
-
-![image](https://user-images.githubusercontent.com/103393514/177360638-46617789-6fb4-4097-a52f-99b1557efe72.png)
 
 Fintbot is our chatbot name that serves to help lenders to fund a project. Fintbot assists lenders with doing project financing activities easily and quickly, such as checking balances, funding projects, and withdraw funds.
 
 ### Deployment on Telegram
 
-![image](https://user-images.githubusercontent.com/69398229/177471098-a3dfd627-dda6-40e7-9ff3-7cac6e320ff5.png)
+![Fintbot-Demo2](https://user-images.githubusercontent.com/69398229/177583069-f7bbfd85-ab93-438e-9e04-1d972e8e80d6.gif)
+
 
 ## Installation
 
