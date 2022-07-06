@@ -5,64 +5,22 @@
     "f1-score": 0.0,
     "support": 4
   },
-  "invest_form": {
-    "precision": 1.0,
-    "recall": 0.3333333333333333,
-    "f1-score": 0.5,
-    "support": 3
-  },
-  "inform": {
-    "precision": 0.5555555555555556,
-    "recall": 1.0,
-    "f1-score": 0.7142857142857143,
-    "support": 5
-  },
-  "[REG506-AMD001](PROJECT_CODE)": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 2
-  },
   "invest": {
-    "precision": 0.6666666666666666,
-    "recall": 1.0,
-    "f1-score": 0.8,
-    "support": 2
-  },
-  "withdrawal": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
     "support": 2
   },
-  "action_invest": {
+  "[500000](amount_of_money)": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 2
-  },
-  "mood_unhappy": {
-    "precision": 0.0,
-    "recall": 0.0,
-    "f1-score": 0.0,
     "support": 3
   },
-  "action_withdrawal": {
+  "affirm": {
     "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 2
-  },
-  "mood_great": {
-    "precision": 0.0,
-    "recall": 0.0,
-    "f1-score": 0.0,
-    "support": 2
-  },
-  "action_project_chooser": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
+    "recall": 0.5,
+    "f1-score": 0.6666666666666666,
     "support": 2
   },
   "[10000](amount_of_money)": {
@@ -71,19 +29,13 @@
     "f1-score": 1.0,
     "support": 1
   },
-  "greet": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 10
-  },
-  "affirm": {
+  "withdrawal": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
     "support": 2
   },
-  "utter_happy": {
+  "utter_did_that_help": {
     "precision": 0.0,
     "recall": 0.0,
     "f1-score": 0.0,
@@ -95,29 +47,17 @@
     "f1-score": 0.6666666666666666,
     "support": 4
   },
-  "utter_ok": {
-    "precision": 0.25,
-    "recall": 1.0,
-    "f1-score": 0.4,
-    "support": 1
-  },
-  "action_listen": {
-    "precision": 0.9142857142857143,
-    "recall": 0.7804878048780488,
-    "f1-score": 0.8421052631578947,
-    "support": 41
-  },
-  "deny": {
-    "precision": 1.0,
-    "recall": 0.5,
-    "f1-score": 0.6666666666666666,
+  "mood_great": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
     "support": 2
   },
-  "[500000](amount_of_money)": {
+  "check_projects": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 3
+    "support": 1
   },
   "[50000000000](amount_of_money)": {
     "precision": 1.0,
@@ -125,17 +65,47 @@
     "f1-score": 1.0,
     "support": 1
   },
-  "check_projects": {
-    "precision": 0.0,
-    "recall": 0.0,
-    "f1-score": 0.0,
-    "support": 1
-  },
-  "utter_noworries": {
+  "check_balance": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 4
+    "support": 1
+  },
+  "greet": {
+    "precision": 0.7142857142857143,
+    "recall": 1.0,
+    "f1-score": 0.8333333333333333,
+    "support": 10
+  },
+  "action_listen": {
+    "precision": 0.9142857142857143,
+    "recall": 0.7804878048780488,
+    "f1-score": 0.8421052631578947,
+    "support": 41
+  },
+  "utter_cheer_up": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 3
+  },
+  "action_project_chooser": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 2
+  },
+  "action_withdrawal": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 2
+  },
+  "deny": {
+    "precision": 0.3333333333333333,
+    "recall": 0.5,
+    "f1-score": 0.4,
+    "support": 2
   },
   "withdrawal_form": {
     "precision": 1.0,
@@ -143,13 +113,61 @@
     "f1-score": 0.6666666666666666,
     "support": 4
   },
-  "goodbye": {
-    "precision": 0.5,
+  "utter_happy": {
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1-score": 0.0,
+    "support": 3
+  },
+  "[REG506-AMD001](PROJECT_CODE)": {
+    "precision": 1.0,
     "recall": 1.0,
-    "f1-score": 0.6666666666666666,
+    "f1-score": 1.0,
     "support": 2
   },
+  "inform": {
+    "precision": 0.5555555555555556,
+    "recall": 1.0,
+    "f1-score": 0.7142857142857143,
+    "support": 5
+  },
+  "utter_greet": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 10
+  },
+  "thankyou": {
+    "precision": 1.0,
+    "recall": 0.75,
+    "f1-score": 0.8571428571428571,
+    "support": 4
+  },
   "action_show_balance": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 1
+  },
+  "action_invest": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
+    "support": 2
+  },
+  "action_show_projects": {
+    "precision": 0.25,
+    "recall": 1.0,
+    "f1-score": 0.4,
+    "support": 3
+  },
+  "utter_ok": {
+    "precision": 0.25,
+    "recall": 1.0,
+    "f1-score": 0.4,
+    "support": 1
+  },
+  "bot_challenge": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
@@ -161,16 +179,16 @@
     "f1-score": 0.6666666666666666,
     "support": 5
   },
-  "bot_challenge": {
-    "precision": 0.25,
+  "goodbye": {
+    "precision": 1.0,
     "recall": 1.0,
-    "f1-score": 0.4,
-    "support": 1
+    "f1-score": 1.0,
+    "support": 2
   },
-  "thankyou": {
-    "precision": 0.75,
-    "recall": 0.75,
-    "f1-score": 0.75,
+  "utter_noworries": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1-score": 1.0,
     "support": 4
   },
   "utter_iamabot": {
@@ -179,52 +197,34 @@
     "f1-score": 1.0,
     "support": 1
   },
-  "utter_greet": {
+  "invest_form": {
     "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 10
-  },
-  "action_show_projects": {
-    "precision": 0.42857142857142855,
-    "recall": 1.0,
-    "f1-score": 0.6,
+    "recall": 0.3333333333333333,
+    "f1-score": 0.5,
     "support": 3
   },
-  "utter_cheer_up": {
-    "precision": 0.0,
-    "recall": 0.0,
-    "f1-score": 0.0,
-    "support": 3
-  },
-  "check_balance": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 1
-  },
-  "utter_did_that_help": {
+  "mood_unhappy": {
     "precision": 0.0,
     "recall": 0.0,
     "f1-score": 0.0,
     "support": 3
   },
   "micro avg": {
-    "precision": 0.8,
+    "precision": 0.7761194029850746,
     "recall": 0.7428571428571429,
-    "f1-score": 0.7703703703703704,
+    "f1-score": 0.759124087591241,
     "support": 140
   },
   "macro avg": {
-    "precision": 0.6804308390022675,
-    "recall": 0.7246806039488967,
-    "f1-score": 0.6668492660221984,
+    "precision": 0.7290702947845805,
+    "recall": 0.7389663182346109,
+    "f1-score": 0.7032438238453276,
     "support": 140
   },
   "weighted avg": {
-    "precision": 0.7634467120181406,
+    "precision": 0.761235827664399,
     "recall": 0.7428571428571429,
-    "f1-score": 0.7295076978159685,
+    "f1-score": 0.7268546365914788,
     "support": 140
   },
   "accuracy": 0.7428571428571429,

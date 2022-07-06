@@ -79,53 +79,53 @@ stories:
   - action: utter_noworries
 - story: liat proyek (./tests/test_stories.yml)
   steps:
-  - intent: check_projects  # predicted: invest: liat dong ada proyek apa
+  - intent: check_projects
   - action: action_show_projects
-  - intent: affirm
+  - intent: affirm  # predicted: greet: wokee
   - action: utter_ok
-- story: happy path 1 (./env/lib/python3.9/site-packages/rasa/cli/initial_project/tests/test_stories.yml)
+- story: happy path 1 (./env/lib/python3.8/site-packages/rasa/cli/initial_project/tests/test_stories.yml)
   steps:
   - intent: greet
   - action: utter_greet
   - action: action_listen  # predicted: utter_help
-  - intent: mood_great  # predicted: goodbye: amazing
-  - action: utter_happy  # predicted: action_default_fallback
-- story: happy path 2 (./env/lib/python3.9/site-packages/rasa/cli/initial_project/tests/test_stories.yml)
+  - intent: mood_great  # predicted: greet: amazing
+  - action: utter_happy  # predicted: action_show_projects
+- story: happy path 2 (./env/lib/python3.8/site-packages/rasa/cli/initial_project/tests/test_stories.yml)
   steps:
   - intent: greet
   - action: utter_greet
   - action: action_listen  # predicted: utter_help
-  - intent: mood_great  # predicted: goodbye: amazing
-  - action: utter_happy  # predicted: action_default_fallback
+  - intent: mood_great  # predicted: greet: amazing
+  - action: utter_happy  # predicted: action_show_projects
   - intent: goodbye
   - action: utter_goodbye
-- story: sad path 1 (./env/lib/python3.9/site-packages/rasa/cli/initial_project/tests/test_stories.yml)
+- story: sad path 1 (./env/lib/python3.8/site-packages/rasa/cli/initial_project/tests/test_stories.yml)
   steps:
   - intent: greet
   - action: utter_greet
   - action: action_listen  # predicted: utter_help
-  - intent: mood_unhappy  # predicted: bot_challenge: not good
-  - action: utter_cheer_up  # predicted: action_default_fallback
+  - intent: mood_unhappy  # predicted: deny: not good
+  - action: utter_cheer_up  # predicted: action_show_projects
   - action: utter_did_that_help  # predicted: action_listen
   - intent: affirm
   - action: utter_happy  # predicted: utter_ok
-- story: sad path 2 (./env/lib/python3.9/site-packages/rasa/cli/initial_project/tests/test_stories.yml)
+- story: sad path 2 (./env/lib/python3.8/site-packages/rasa/cli/initial_project/tests/test_stories.yml)
   steps:
   - intent: greet
   - action: utter_greet
   - action: action_listen  # predicted: utter_help
-  - intent: mood_unhappy  # predicted: bot_challenge: not good
-  - action: utter_cheer_up  # predicted: action_default_fallback
+  - intent: mood_unhappy  # predicted: deny: not good
+  - action: utter_cheer_up  # predicted: action_show_projects
   - action: utter_did_that_help  # predicted: action_listen
-  - intent: deny  # predicted: bot_challenge: not really
+  - intent: deny  # predicted: greet: not really
   - action: utter_goodbye  # predicted: utter_ok
-- story: sad path 3 (./env/lib/python3.9/site-packages/rasa/cli/initial_project/tests/test_stories.yml)
+- story: sad path 3 (./env/lib/python3.8/site-packages/rasa/cli/initial_project/tests/test_stories.yml)
   steps:
   - intent: greet
   - action: utter_greet
   - action: action_listen  # predicted: utter_help
-  - intent: mood_unhappy  # predicted: thankyou: very terrible
-  - action: utter_cheer_up  # predicted: action_default_fallback
+  - intent: mood_unhappy  # predicted: nlu_fallback: very terrible
+  - action: utter_cheer_up  # predicted: action_show_projects
   - action: utter_did_that_help  # predicted: action_listen
   - intent: deny
   - action: utter_goodbye  # predicted: utter_ok
