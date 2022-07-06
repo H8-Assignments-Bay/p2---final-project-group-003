@@ -352,6 +352,11 @@ nlu:
     - iyo
     - keren
     - bagus
+    - mantap
+    - mantapppp
+    - mantappppppp
+    - mantap banget
+    - mantap bener
 
 - intent: deny
   examples: |
