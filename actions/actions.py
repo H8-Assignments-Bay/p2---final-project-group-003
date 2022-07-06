@@ -41,7 +41,7 @@ class ActionProjectChooser(Action):
         project_code_list = [project['name'] for project in project_list]
 
         buttons = []
-        for num, project_code in enumerate(project_code_list):
+        for project_code in project_code_list:
             title = project_code
             payload = f'inform{{"PROJECT_CODE": "{project_code}"}}'
             buttons.append({"title": title, "payload": payload})
@@ -103,7 +103,7 @@ class ActionInvest(Action):
         """Unique identifier of the action"""
         return "action_invest"
 
-    def run(
+    async def run(
             self, dispatcher: CollectingDispatcher,
             tracker: Tracker, domain: Dict
         ) -> List[EventType]:
