@@ -68,8 +68,8 @@ Installed files could reach ~3GB on local storage because of the hefty environme
 
 ## Environment Setup
 
-Next, run the following command to create a `conda` virtual environment that contains all the libraries needed to run the chatbot:
-For windows user, you might need to use `Anaconda Prompt`
+Next, run the following command to create a `conda` virtual environment that contains all the libraries needed to run the chatbot:\
+*For windows user, you might need to use `Anaconda Prompt`
 
 ```
 conda env create -n fintbot -f ./environment.yml
