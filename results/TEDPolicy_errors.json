@@ -1,0 +1,78 @@
+[
+  {
+    "text": "REG506-AMD001",
+    "entities": [
+      {
+        "text": "REG506-AMD001",
+        "start": 0,
+        "end": 13,
+        "entity": "PROJECT_CODE",
+        "value": "REG506-AMD001"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "500000",
+    "entities": [
+      {
+        "text": "500000",
+        "start": 0,
+        "end": 6,
+        "entity": "amount_of_money",
+        "value": "500000"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "mau tarik duit dong 50000000000",
+    "entities": [
+      {
+        "start": 20,
+        "end": 31,
+        "value": "50000000000",
+        "entity": "amount_of_money"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "10000",
+    "entities": [
+      {
+        "text": "10000",
+        "start": 0,
+        "end": 5,
+        "entity": "amount_of_money",
+        "value": "10000"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "REG506-AMD001",
+    "entities": [
+      {
+        "text": "REG506-AMD001",
+        "start": 0,
+        "end": 13,
+        "entity": "PROJECT_CODE",
+        "value": "REG506-AMD001"
+      }
+    ],
+    "predicted_entities": []
+  },
+  {
+    "text": "500000",
+    "entities": [
+      {
+        "start": 0,
+        "end": 6,
+        "value": "500000",
+        "entity": "amount_of_money"
+      }
+    ],
+    "predicted_entities": []
+  }
+]
